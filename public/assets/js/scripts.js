@@ -14,7 +14,8 @@
     _mobile_nav = 'mobile-menu',
     _header = 'nk-header',
     _header_menu = 'nk-header-menu',
-    _aside = 'nk-aside',
+    _sidebar = 'nk-sidebar',
+    _sidebar_mob = 'nk-sidebar-mobile',
     //breakpoints
     _break = NioApp.Break;
   function extend(obj, ext) {
@@ -25,7 +26,7 @@
   }
   // ClassInit @v1.0
   NioApp.ClassBody = function () {
-    NioApp.AddInBody(_aside);
+    NioApp.AddInBody(_sidebar);
   };
 
   // ClassInit @v1.0
@@ -33,12 +34,15 @@
     NioApp.BreakClass('.' + _header_menu, _break.lg, {
       timeOut: 0
     });
-    NioApp.BreakClass('.' + _aside, _break.lg, {
-      timeOut: 0
+    NioApp.BreakClass('.' + _sidebar, _break.lg, {
+      timeOut: 0,
+      classAdd: _sidebar_mob
     });
     $win.on('resize', function () {
       NioApp.BreakClass('.' + _header_menu, _break.lg);
-      NioApp.BreakClass('.' + _aside, _break.lg);
+      NioApp.BreakClass('.' + _sidebar, _break.lg, {
+        classAdd: _sidebar_mob
+      });
     });
   };
 
@@ -111,6 +115,27 @@
       } else {
         self.closest("li").removeClass('active current-page').parents().closest("li:not(.current-page)").removeClass("active");
       }
+    });
+  };
+
+  // Sticky Nav @v1.0
+  NioApp.StickyNav = function () {
+    var elem = document.querySelectorAll('.' + _header);
+    if (elem.length > 0) {
+      elem.forEach(function (item) {
+        var _item_offset = 30;
+        if (window.scrollY > _item_offset) {
+          item.classList.add('has-fixed');
+        } else {
+          item.classList.remove('has-fixed');
+        }
+      });
+    }
+  };
+  NioApp.StickyNav.init = function () {
+    NioApp.StickyNav();
+    window.addEventListener("scroll", function () {
+      NioApp.StickyNav();
     });
   };
 
@@ -237,7 +262,7 @@
       },
       attr = opt ? extend(def, opt) : def;
     $(imenu).on('click', function (e) {
-      if (NioApp.Win.width < _break.lg || $(this).parents().hasClass(_aside)) {
+      if (NioApp.Win.width < _break.lg || $(this).parents().hasClass(_sidebar)) {
         NioApp.Toggle.dropMenu($(this), attr);
       }
       e.preventDefault();
@@ -250,14 +275,14 @@
       $toggle = $(toggle),
       $contentD = $('[data-content]'),
       toggleBreak = $contentD.hasClass(_header_menu) ? _break.lg : _break.xl,
-      toggleOlay = _header + '-overlay',
+      toggleOlay = _sidebar + '-overlay',
       toggleClose = {
         profile: true,
         menu: false
       },
       def = {
         active: 'toggle-active',
-        content: _header + '-active',
+        content: _sidebar + '-active',
         body: 'nav-shown',
         overlay: toggleOlay,
         "break": toggleBreak,
@@ -472,8 +497,8 @@
         var export_title = $(this).data('export-title') ? $(this).data('export-title') : 'Export';
         var btn = has_export ? '<"dt-export-buttons d-flex align-center"<"dt-export-title d-none d-md-inline-block">B>' : '',
           btn_cls = has_export ? ' with-export' : '';
-        var dom_normal = '<"row justify-between g-2' + btn_cls + '"<"col-7 col-sm-4 text-start"f><"col-5 col-sm-8 text-start"<"datatable-filter"<"d-flex justify-content-end g-2"' + btn + 'l>>>><"datatable-wrap my-3"t><"row align-items-center"<"col-7 col-sm-12 col-md-9"p><"col-5 col-sm-12 col-md-3 text-start text-md-end"i>>';
-        var dom_separate = '<"row justify-between g-2' + btn_cls + '"<"col-7 col-sm-4 text-start"f><"col-5 col-sm-8 text-start"<"datatable-filter"<"d-flex justify-content-end g-2"' + btn + 'l>>>><"my-3"t><"row align-items-center"<"col-7 col-sm-12 col-md-9"p><"col-5 col-sm-12 col-md-3 text-start text-md-end"i>>';
+        var dom_normal = '<"row justify-between g-2' + btn_cls + '"<"col-7 col-sm-4 text-start"f><"col-5 col-sm-8 text-end"<"datatable-filter"<"d-flex justify-content-end g-2"' + btn + 'l>>>><"datatable-wrap my-3"t><"row align-items-center"<"col-7 col-sm-12 col-md-9"p><"col-5 col-sm-12 col-md-3 text-start text-md-end"i>>';
+        var dom_separate = '<"row justify-between g-2' + btn_cls + '"<"col-7 col-sm-4 text-start"f><"col-5 col-sm-8 text-end"<"datatable-filter"<"d-flex justify-content-end g-2"' + btn + 'l>>>><"my-3"t><"row align-items-center"<"col-7 col-sm-12 col-md-9"p><"col-5 col-sm-12 col-md-3 text-start text-md-end"i>>';
         var dom = $(this).hasClass('is-separate') ? dom_separate : dom_normal;
         var def = {
             responsive: true,
@@ -839,6 +864,49 @@
     NioApp.Tagify('.js-tagify');
   };
 
+  /* Isotope - Filter @v1.0 */
+  NioApp.Filter = function (elem, childSelector) {
+    var qsRegex;
+    var elm = document.querySelectorAll(elem);
+    elm.forEach(function (item) {
+      if (typeof item != 'undefined' && item != null) {
+        var iso = new Isotope(item, {
+          itemSelector: childSelector,
+          layoutMode: 'fitRows',
+          filter: function filter(itemElem) {
+            return qsRegex ? itemElem.textContent.match(qsRegex) : true;
+          },
+          hiddenStyle: {
+            opacity: 0,
+            transform: 'scale(0.001)'
+          },
+          visibleStyle: {
+            opacity: 1,
+            transform: 'scale(1)'
+          }
+        });
+        var filterBtn = document.querySelectorAll('[data-filter]');
+        console.log();
+        filterBtn.forEach(function (btnItem) {
+          btnItem.addEventListener('click', function (event) {
+            // only work with buttons
+            if (!matchesSelector(event.target, 'button')) {
+              return;
+            }
+            var filterValue = event.target.getAttribute('data-filter');
+            iso.arrange({
+              filter: filterValue
+            });
+            filterBtn.forEach(function (allButtons) {
+              allButtons.classList.remove('active');
+            });
+            btnItem.classList.add('active');
+          });
+        });
+      }
+    });
+  };
+
   // Extra @v1.1
   NioApp.OtherInit = function () {
     NioApp.ClassBody();
@@ -854,6 +922,7 @@
     NioApp.Lightbox('.popup-image', 'image');
     NioApp.Lightbox('.popup-content', 'content');
     NioApp.Control('.custom-control-input');
+    NioApp.Filter('.filter-container', '.filter-item');
   };
 
   // Animate Init @v1.0
@@ -949,6 +1018,7 @@
     NioApp.coms.docReady.push(NioApp.Wizard);
     NioApp.coms.docReady.push(NioApp.Stepper.init);
     NioApp.coms.winLoad.push(NioApp.ModeSwitch);
+    NioApp.coms.winLoad.push(NioApp.StickyNav.init);
   };
   NioApp.init();
   return NioApp;

@@ -449,7 +449,6 @@ button::-moz-focus-inner {
 .tox .tox-bar .tox-checkbox {
   margin-left: 4px;
 }
-
 .tox .tox-collection--toolbar .tox-collection__group {
   display: flex;
   padding: 0;
@@ -1297,7 +1296,6 @@ button::-moz-focus-inner {
 body.tox-dialog__disable-scroll {
   overflow: hidden;
 }
-
 .tox.tox-platform-ie .tox-dialog-wrap {
   position: -ms-device-fixed;
 }
@@ -1899,7 +1897,7 @@ body.tox-dialog__disable-scroll {
   font-weight: normal;
   height: 34px;
   justify-content: center;
-  margin: 2px 0 3px 0;
+  margin: 2px 0 2px 0;
   outline: none;
   overflow: hidden;
   padding: 0 4px;
@@ -2378,6 +2376,7 @@ body.tox-dialog__disable-scroll {
   margin-left: auto;
   margin-right: -8px;
   padding-left: 1ch;
+  padding: .185rem;
 }
 .tox .tox-statusbar__resize-handle svg {
   display: block;
@@ -2386,7 +2385,6 @@ body.tox-dialog__disable-scroll {
 .tox .tox-statusbar__path > * {
   margin-right: 4px;
 }
-
 .tox .tox-throbber {
   z-index: 1400;
 }
@@ -2415,7 +2413,7 @@ body.tox-dialog__disable-scroll {
   font-weight: normal;
   height: 34px;
   justify-content: center;
-  margin: 2px 0 3px 0;
+  margin: 2px 0 2px 0;
   outline: none;
   overflow: hidden;
   padding: 0;
@@ -2524,7 +2522,7 @@ body.tox-dialog__disable-scroll {
   white-space: nowrap;
 }
 .tox .tox-tbtn--select {
-  margin: 2px 0 3px 0;
+  margin: 2px 0 2px 0;
   padding: 0 4px;
   width: auto;
 }
@@ -2740,7 +2738,9 @@ body.tox-dialog__disable-scroll {
   position: relative;
 }
 /* stylelint-disable */
-
+.tox {
+  /* stylelint-enable */
+}
 .tox .tox-dialog-loading::before {
   background-color: rgba(0, 0, 0, 0.5);
   content: "";

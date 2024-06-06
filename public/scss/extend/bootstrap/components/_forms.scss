@@ -229,7 +229,6 @@
             margin-bottom: 0;
         }
     }
-    
     &-focus{
         &-none{
             &:focus{
@@ -328,7 +327,6 @@ textarea{
     }
 }
 
-
 .custom-btn{
     &-check{
         position: relative;
@@ -383,7 +381,6 @@ textarea{
     flex-flow: row wrap;
     align-items: center;
 }
-
 .form-control, .dual-listbox .dual-listbox__search, div.dataTables_wrapper div.dataTables_filter input{
     min-height: $input-height;
 }

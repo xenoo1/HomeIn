@@ -38,5 +38,8 @@
 /** jQuery Magnific Popup */
 @@include('@@nodeRoot/node_modules/magnific-popup/dist/jquery.magnific-popup.min.js')
 
+// Isotope
+@@include('@@nodeRoot/node_modules/isotope-layout/dist/isotope.pkgd.min.js')
+
 /** Code Prettify */
 @@include('vendors/prettify.js')

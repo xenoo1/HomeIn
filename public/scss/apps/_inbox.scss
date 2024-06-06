@@ -85,11 +85,10 @@ $ibx-aside-width :      260px;
     position: relative;
     display: flex;
     overflow: hidden;
-    background: $white;
-    border:1px solid $border-color;
     border-radius: $border-radius;
-    min-height: calc(100vh - (#{$header-height} + 64px + 96px));
-    max-height: calc(100vh - (#{$header-height} + 64px + 96px));
+    min-height: calc(100vh - (#{$header-height} + 86px + #{$body-offset*2}));
+    max-height: calc(100vh - (#{$header-height} + 86px + #{$body-offset*2}));
+    background: $white;
     &-aside{
         position: absolute;
         background: $white;
@@ -112,17 +111,17 @@ $ibx-aside-width :      260px;
         &.content-active{
             transform: none;
         }
-        .simplebar-content{
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
     }
     &-nav{
         overflow: auto;
         flex-grow: 1;
         height: 100%;
         max-width: 100%;
+        .simplebar-content{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
         &-head{
             display: flex;
             align-items: center;
@@ -143,7 +142,7 @@ $ibx-aside-width :      260px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: .75rem .75rem;
+        padding: .75rem 1.25rem;
         border-bottom: 1px solid $border-light;
         min-height: 61px;
         .title{
@@ -301,9 +300,9 @@ $ibx-aside-width :      260px;
         padding-bottom: 1.75rem;
     }
     &-status{
+        margin-top: auto;
         background: $lighter;
         padding: 1.5rem 1.5rem;
-        margin-top: auto;
         &-info{
             margin-bottom: 0.5rem;
             .icon{
@@ -525,32 +524,27 @@ $ibx-aside-width :      260px;
             position: static;
             transform: none;
             transition: none;
-            height: calc(100vh - 228px);
+            height: calc(100vh - 128px);
         }
         &-menu,&-label,&-contact{
             padding-left: 1rem;
             padding-right: 1rem;
-        } 
+        }
         &-menu{
             padding-top: 1rem;
         }
         &-contact{
             padding-bottom: 1rem;
         }
-
         &-nav{
             &-head{
                 padding-left: 1.75rem;
                 padding-right: 1.75rem;
             }
         }
-        &-item{
+        &-item,&-head{
             padding-left: 1.75rem;
             padding-right: 1.75rem;
-        }
-        &-head{
-            padding-left: 1rem;
-            padding-right: 1rem;
         }
         &-head{
             .search-wrap{
@@ -582,7 +576,19 @@ $ibx-aside-width :      260px;
                 width: 200px;
             }
             &-time{
-                margin-right: 2rem;
+                margin-right: 5rem;
+            }
+        }
+    }
+}
+@include media-breakpoint-up(xxl){
+    .nk-ibx{
+        &-item{
+            &-user{
+                width: 260px;
+            }
+            &-tools{
+                margin-left: 5rem;
             }
         }
     }
@@ -694,7 +700,7 @@ $ibx-aside-width :      260px;
     }
 }
 
-@include media-breakpoint-between(sm,md){
+@include media-breakpoint-between(sm,lg){
     .nk-ibx{
         &-aside {
             width: 320px;
@@ -707,5 +713,11 @@ $ibx-aside-width :      260px;
             padding-left: 2.25rem;
             padding-right: 2.25rem;
         }
+    }
+}
+@include media-breakpoint-between(sm,xl){
+    .nk-ibx{
+        min-height: calc(100vh - (#{$header-height} + 78px + #{$body-offset}));
+        max-height: calc(100vh - (#{$header-height} + 78px + #{$body-offset}));
     }
 }

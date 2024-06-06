@@ -9,9 +9,9 @@ $file-desc-sap:           $ni-dot !default;
 /// Layout for FMG
 .nk-fmg{
     position: relative;
-    border: 1px solid $border-color;
+    background-color: $white;
     border-radius: $border-radius;
-    background-color: rgba($white,.4);
+    min-height: calc(100vh - (#{$header-height} + 78px + #{$body-offset*2}));
     &-aside{
         position: fixed;
         width: $fmg-aside-width;
@@ -20,14 +20,14 @@ $file-desc-sap:           $ni-dot !default;
         max-height: 100%;
         background: $white;
         flex-shrink: 0;
-        z-index: 99;
-        top: $header-height;
+        z-index: 9999;
         left: 0;
         transform: translateX(-100%);
         border-right: 1px solid $border-light;
+        top: 0;
         transition: transform .4s linear;
-        min-height: calc(100vh - #{$header-height});
-        max-height: calc(100vh - #{$header-height});
+        min-height: 100vh;
+        max-height: 100vh;
         overflow-y: auto;
         + .toggle-overlay{
             z-index: 90;
@@ -44,6 +44,7 @@ $file-desc-sap:           $ni-dot !default;
             flex-direction: column; 
         }
         &-top{
+            margin-bottom: auto;
             margin-bottom: 30px;
         }
     }
@@ -155,7 +156,7 @@ $file-desc-sap:           $ni-dot !default;
             z-index: 9;
             position: relative;
             top: 0;
-            border-top-right-radius: $border-radius;
+            border-top-right-radius: inherit;
         }
         &-content{
             padding:1.125rem 1.25rem;
@@ -236,16 +237,19 @@ $file-desc-sap:           $ni-dot !default;
             width: $fmg-aside-width;
             position: absolute;
             top: 0;
+            left: 0;
+            z-index: 99;
+            border-top-left-radius: inherit;
+            border-bottom-left-radius: inherit;
             min-height: 100%;
             max-height: 100%;
-            left: 0;
-            border-top-left-radius: $border-radius;
-            border-bottom-left-radius: $border-radius;
             &-top{
                 flex-grow: 0;
             }
         }
         &-body{
+            border-top-right-radius: inherit;
+            border-bottom-right-radius: inherit;
             &-head{
                 padding: .75rem 1.75rem;
                 z-index: 9;
@@ -608,6 +612,11 @@ $file-desc-sap:           $ni-dot !default;
                     }
                 }
             } 
+            &:not(:last-child){
+                > div{
+                    border-bottom: 1px solid $border-color;
+                }
+            } 
             .custom-checkbox{
                 margin-right: 1rem;
             }
@@ -684,8 +693,8 @@ $file-desc-sap:           $ni-dot !default;
             position: relative;
             margin: 8px;
             background: $white;
-            border: 1px solid $border-color;
             border-radius: $border-radius;
+            border: 1px solid $border-color;
             .nk-file-members{
                 display: none;
             }
@@ -854,6 +863,36 @@ $file-desc-sap:           $ni-dot !default;
         &-group {
             .nk-file{
                 width: calc(50% - 16px);
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(xxl){
+    .nk-files-view{
+        &-grid {
+            .nk-file{
+                width:calc(20% - 16px);
+            }
+        }
+        &-group {
+            .nk-file{
+                width: calc(33.33% - 16px);
+            }
+        }
+    }
+}
+
+@media (min-width: 1800px) {
+    .nk-files-view{
+        &-grid {
+            .nk-file{
+                width:calc(16.66% - 16px);
+            }
+        }
+        &-group {
+            .nk-file{
+                width: calc(25% - 16px);
             }
         }
     }

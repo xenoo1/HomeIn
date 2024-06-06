@@ -510,7 +510,6 @@
         }
     }
 }
-
 //image control
 .image-control{
     &.custom-control{
@@ -565,12 +564,13 @@
       }
       &::after {
         opacity: 1;
-        top: math.div($checkbox-radio-switch-size - $switch-indicator-size, 2);
+        top: math.div($checkbox-radio-switch-size - $switch-indicator-size,2);
         left: -3.5rem;
         width: $switch-indicator-size;
         height: $switch-indicator-size;
         border-radius: $switch-indicator-border-radius;
         background-color: $custom-control-indicator-border-color;
+        transition: transform .15s ease-in-out, $custom-forms-transition;
       }
     }
     .custom-control-input:disabled {
@@ -593,7 +593,7 @@
               border-radius: $switch-indicator-border-radius-sm;
             }
             &::after {
-              top: math.div($checkbox-radio-switch-size-sm - $switch-indicator-size-sm, 2);
+              top: math.div($checkbox-radio-switch-size-sm - $switch-indicator-size-sm,2);
               left: add(-($switch-width-sm + $checkbox-radio-switch-text-gap-sm), $switch-border-calc);
               width: $switch-indicator-size-sm;
               height: $switch-indicator-size-sm;
@@ -610,12 +610,12 @@
         padding-left: $switch-width-lg + $checkbox-radio-switch-text-gap-lg;
         .custom-control-label {
             &::before {
-                left: -($switch-width-lg + $checkbox-radio-switch-text-gap-lg);
+              left: -($switch-width-lg + $checkbox-radio-switch-text-gap-lg);
               width: $switch-width-lg;
               border-radius: $switch-indicator-border-radius-lg;
             }
             &::after {
-              top: math.div($checkbox-radio-switch-size-lg - $switch-indicator-size-lg, 2);
+              top: math.div($checkbox-radio-switch-size-lg - $switch-indicator-size-lg,2);
               left: add(-($switch-width-lg + $checkbox-radio-switch-text-gap-lg), $switch-border-calc-1-5x);
               width: $switch-indicator-size-lg;
               height: $switch-indicator-size-lg;
@@ -730,7 +730,6 @@ label{
     }
 }
 
-// Form file
 
 .form-file {
     position: relative;
