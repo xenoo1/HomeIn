@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('gambar')->nullable();
             $table->decimal('harga', 15, 2);
             $table->string('lokasi');
-            $table->string('kategory');
+            $table->string('kategori');
             $table->enum('status', ['tersedia', 'dibeli', 'disewa']);
             $table->timestamps();
         });
