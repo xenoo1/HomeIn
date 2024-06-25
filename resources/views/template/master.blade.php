@@ -49,7 +49,7 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/index-sales.html" class="nk-menu-link">
+                                    <a href="/properties" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-cc-alt2"></em></span>
                                         <span class="nk-menu-text">Property</span>
                                     </a>
@@ -102,8 +102,8 @@
                                                     </a>
                                                 </li><!-- .nk-menu-item -->
                                                 <li class="nk-menu-item">
-                                                    <a href="html/index-sales.html" class="nk-menu-link">
-                                                        <span class="nk-menu-text">Property</span>
+                                                    <a href="properties" class="nk-menu-link">
+                                                     <span class="nk-menu-text">Property</span>
                                                     </a>
                                                 </li><!-- .nk-menu-item -->
                                                 <li class="nk-menu-item">
@@ -403,9 +403,16 @@
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                                                    <form method="POST" action="{{ route('logout') }}">
+                                                        @csrf
+                                                        <li>
+                                                            <button type="submit" class="btn btn-link" style="text-decoration: none; color: inherit;">
+                                                                <em class="icon ni ni-signout"></em><span>Sign out</span>
+                                                            </button>
+                                                        </li>
+                                                    </form>
                                                 </ul>
-                                            </div>
+                                            </div>                                            
                                         </div>
                                     </li>
                                 </ul>

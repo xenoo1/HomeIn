@@ -1,1 +1,1 @@
-@extends('layout.master');
+@extends('template.master');
