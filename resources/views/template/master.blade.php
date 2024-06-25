@@ -43,7 +43,7 @@
                                     <h6 class="overline-title text-primary-alt">Dashboards</h6>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/index.html" class="nk-menu-link">
+                                    <a href="/dashboard" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-presentation"></em></span>
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
@@ -55,13 +55,13 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/index-invest.html" class="nk-menu-link">
+                                    <a href="/customer" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
                                         <span class="nk-menu-text">Customer</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/index-crypto.html" class="nk-menu-link">
+                                    <a href="/orderlist" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-bitcoin-cash"></em></span>
                                         <span class="nk-menu-text">OrderList</span>
                                     </a>
@@ -97,22 +97,22 @@
                                             </a>
                                             <ul class="nk-menu-sub">
                                                 <li class="nk-menu-item">
-                                                    <a href="html/index.html" class="nk-menu-link">
+                                                    <a href="/dashboard" class="nk-menu-link">
                                                         <span class="nk-menu-text">Dashboard</span>
                                                     </a>
                                                 </li><!-- .nk-menu-item -->
                                                 <li class="nk-menu-item">
-                                                    <a href="properties" class="nk-menu-link">
+                                                    <a href="/properties" class="nk-menu-link">
                                                      <span class="nk-menu-text">Property</span>
                                                     </a>
                                                 </li><!-- .nk-menu-item -->
                                                 <li class="nk-menu-item">
-                                                    <a href="html/index-invest.html" class="nk-menu-link">
+                                                    <a href="/customer" class="nk-menu-link">
                                                         <span class="nk-menu-text">Customer</span>
                                                     </a>
                                                 </li><!-- .nk-menu-item -->
                                                 <li class="nk-menu-item">
-                                                    <a href="html/index-crypto.html" class="nk-menu-link">
+                                                    <a href="/orderlist" class="nk-menu-link">
                                                         <span class="nk-menu-text">OrderList</span>
                                                     </a>
                                                 </li><!-- .nk-menu-item -->
