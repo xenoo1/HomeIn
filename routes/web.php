@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderlistController;
+
 use App\Http\Controllers\Auth\LoginController;
+use App\Models\Orderlist;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +45,23 @@ Route::delete('/properties/{property}', [PropertyController::class, 'destroy'])-
 
 
 #customer
+Route::resource('/customers', CustomerController::class);
+
+Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
+Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
+Route::get('/customers/{customer}', [CustomerController::class, 'show'])->name('customers.show');
+Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customers.update');
+Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
 
 #orderlist
+Route::resource('/orderlist', OrderlistController::class);
+
+Route::get('/orderlist', [OrderlistController::class, 'index'])->name('orderlist.index');
+Route::get('/orderlist/create', [OrderlistController::class, 'create'])->name('orderlist.create');
+Route::post('/orderlist', [OrderlistController::class, 'store'])->name('orderlist.store');
+Route::get('/orderlist/{orderlist}', [OrderlistController::class, 'show'])->name('orderlist.show');
+Route::get('/orderlist/{orderlist}/edit', [OrderlistController::class, 'edit'])->name('orderlist.edit');
+Route::put('/orderlist/{orderlist}', [OrderlistController::class, 'update'])->name('orderlist.update');
+Route::delete('/orderlist/{orderlist}', [OrderlistController::class, 'destroy'])->name('orderlist.destroy');

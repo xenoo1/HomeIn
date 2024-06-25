@@ -43,7 +43,7 @@
                                     <h6 class="overline-title text-primary-alt">Dashboards</h6>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="/dashboard" class="nk-menu-link">
+                                    <a href="/home" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-presentation"></em></span>
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
@@ -55,7 +55,7 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="/customer" class="nk-menu-link">
+                                    <a href="/customers" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
                                         <span class="nk-menu-text">Customer</span>
                                     </a>
@@ -97,7 +97,7 @@
                                             </a>
                                             <ul class="nk-menu-sub">
                                                 <li class="nk-menu-item">
-                                                    <a href="/dashboard" class="nk-menu-link">
+                                                    <a href="/home" class="nk-menu-link">
                                                         <span class="nk-menu-text">Dashboard</span>
                                                     </a>
                                                 </li><!-- .nk-menu-item -->
@@ -107,7 +107,7 @@
                                                     </a>
                                                 </li><!-- .nk-menu-item -->
                                                 <li class="nk-menu-item">
-                                                    <a href="/customer" class="nk-menu-link">
+                                                    <a href="/customers" class="nk-menu-link">
                                                         <span class="nk-menu-text">Customer</span>
                                                     </a>
                                                 </li><!-- .nk-menu-item -->
@@ -338,13 +338,13 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="dropdown language-dropdown d-none d-sm-block me-n1">
+                                    {{-- <li class="dropdown language-dropdown d-none d-sm-block me-n1">
                                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
                                             <div class="quick-icon border border-light">
                                                 <img class="icon" src="./images/flags/english-sq.png" alt="">
                                             </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
+                                        </a> --}}
+                                        {{-- <div class="dropdown-menu dropdown-menu-end">
                                             <ul class="language-list">
                                                 <li>
                                                     <a href="#" class="language-item">
@@ -372,7 +372,8 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </li><!-- .dropdown -->
+                                    </li> --}}
+                                    <!-- .dropdown -->
                                     <li class="dropdown user-dropdown">
                                         <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                                             <div class="user-toggle">
