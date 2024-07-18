@@ -1,40 +1,43 @@
 @extends('template.master')
-@section('title','Tambah Property')
+@section('title','Tambah Properti')
 
 @section('content')
 <div class="container">
     <form action="{{ route('properties.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-            <label for="name" class="form-label">Property Name</label>
-            <input type="text" name="name" id="name" class="form-control" required>
+            <label for="nama" class="form-label">Nama</label>
+            <input type="text" name="nama" id="nama" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea name="description" id="description" class="form-control" required></textarea>
+            <label for="deskripsi" class="form-label">Deskripsi</label>
+            <textarea name="deskripsi" id="deskripsi" class="form-control" required></textarea>
         </div>
         <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
-            <input type="file" name="image" id="image" class="form-control">
+            <label for="gambar" class="form-label">Gambar</label>
+            <input type="file" name="gambar" id="gambar" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" name="price" id="price" class="form-control" required>
+            <label for="harga" class="form-label">Harga</label>
+            <input type="number" name="harga" id="harga" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label for="location" class="form-label">Location</label>
-            <input type="text" name="location" id="location" class="form-control" required>
+            <label for="lokasi" class="form-label">Lokasi</label>
+            <input type="text" name="lokasi" id="lokasi" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label for="category" class="form-label">Category</label>
-            <input type="text" name="category" id="category" class="form-control" required>
+            <label for="kategori" class="form-label">Kategori</label>
+            <select name="kategori" id="kategori" class="form-control" required>
+                <option value="rumah">Rumah</option>
+                <option value="villa">Villa</option>
+                <option value="apartment">Apartment</option>
+            </select>
         </div>
         <div class="mb-3">
             <label for="status" class="form-label">Status</label>
             <select name="status" id="status" class="form-control" required>
-                <option value="available">Available</option>
-                <option value="sold">Sold</option>
-                <option value="rented">Rented</option>
+                <option value="tersedia">Tersedia</option>
+                <option value="terjual">Terjual</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Add Property</button>
