@@ -43,7 +43,7 @@
                                     <h6 class="overline-title text-primary-alt">Dashboards</h6>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="/home" class="nk-menu-link">
+                                    <a href="/" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-presentation"></em></span>
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
@@ -423,6 +423,7 @@
                 </div>
                 <!-- main header @e -->
                 <!-- content @s -->
+
                 <div class="nk-content nk-content-fluid">
                     <div class="container-xl wide-xl">
                         <div class="nk-content-body">
@@ -444,6 +445,7 @@
                                                     </li>
                                                     <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Reports</span></a></li>
                                                 </ul>
+                                               
                                             </div>
                                         </div>
                                     </div><!-- .nk-block-head-content -->
@@ -454,6 +456,7 @@
                     </div>
                 </div>
                 <!-- content @e -->
+                @yield('content')
                 <!-- footer @s -->
                 {{-- <div class="nk-footer">
                     <div class="container-xl wide-xl">

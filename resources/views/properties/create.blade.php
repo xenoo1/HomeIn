@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('template.master')
+@section('title','Tambah Property')
 
 @section('content')
 <div class="container">
-    <h1>Add Property</h1>
     <form action="{{ route('properties.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">

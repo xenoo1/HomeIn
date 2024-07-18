@@ -26,7 +26,7 @@ use App\Models\Orderlist;
 Auth::routes();
 
 #dashboard
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 #logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
