@@ -13,9 +13,9 @@
                 <div class="card-body">
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <a href="{{ route('properties.create') }}" class="btn btn-primary">**Add New Property**</a>
-                            <a href="#" class="btn btn-secondary">**Edit Existing Property**</a>
-                            <a href="#" class="btn btn-danger">**Delete Property**</a>
+                            <a href="{{ route('properties.create') }}" class="btn btn-primary">Add New Property</a>
+                            <a href="#" class="btn btn-secondary">Edit Existing Property</a>
+                            <a href="#" class="btn btn-danger">Delete Property</a>
                         </div>
                     </div>
 

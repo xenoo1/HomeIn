@@ -11,25 +11,25 @@ class PropertyController extends Controller
     {
         $properties = Property::query();
 
-        if ($request->filled('kategori')) {
-            $properties->where('kategori', $request->kategori);
-        }
+        $properties->when($request->filled('kategori'), function ($query) use ($request) {
+            $query->where('kategori', $request->kategori);
+        });
 
-        if ($request->filled('lokasi')) {
-            $properties->where('lokasi', $request->lokasi);
-        }
+        $properties->when($request->filled('lokasi'), function ($query) use ($request) {
+            $query->where('lokasi', $request->lokasi);
+        });
 
-        if ($request->filled('harga_min')) {
-            $properties->where('harga', '>=', $request->harga_min);
-        }
+        $properties->when($request->filled('harga_min'), function ($query) use ($request) {
+            $query->where('harga', '>=', $request->harga_min);
+        });
 
-        if ($request->filled('harga_max')) {
-            $properties->where('harga', '<=', $request->harga_max);
-        }
+        $properties->when($request->filled('harga_max'), function ($query) use ($request) {
+            $query->where('harga', '<=', $request->harga_max);
+        });
 
-        if ($request->filled('status')) {
-            $properties->where('status', $request->status);
-        }
+        $properties->when($request->filled('status'), function ($query) use ($request) {
+            $query->where('status', $request->status);
+        });
 
         return view('properties.index', ['properties' => $properties->get()]);
     }
@@ -40,26 +40,33 @@ class PropertyController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $data = $request->validate([
-            'nama' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'gambar' => 'nullable|gambar|max:2048',
-            'harga' => 'required|numeric',
-            'lokasi' => 'required|string|max:255',
-            'kategori' => 'required|string|max:255',
-            'status' => 'required|in:available,sold,rented',
-        ]);
+{
+    $data = $request->validate([
+        'nama' => 'required|string|max:255',
+        'deskripsi' => 'required|string',
+        'gambar' => 'nullable|image|max:2048',
+        'harga' => 'required|numeric',
+        'lokasi' => 'required|string|max:255',
+        'kategori' => 'required|string|max:255',
+        'status' => 'required|in:tersedia,terjual',
+    ]);
 
-        if ($request->hasFile('gambar')) {
-            $data['gambar'] = $request->file('gambar')->store('property_gambars', 'public');
-        }
-
-        Property::create($data);
-
-        return redirect()->route('properties.index');
+    if ($request->hasFile('gambar')) {
+        $data['gambar'] = $request->file('gambar')->store('property_gambars', 'public');
     }
 
+    $property = new Property();
+    $property->nama = $data['nama'];
+    $property->deskripsi = $data['deskripsi'];
+    $property->gambar = $data['gambar'];
+    $property->harga = $data['harga'];
+    $property->lokasi = $data['lokasi'];
+    $property->kategori = $data['kategori'];
+    $property->status = $data['status'];
+    $property->save();
+
+    return redirect()->route('properties.index');
+}
     public function show(Property $property)
     {
         return view('properties.show', ['property' => $property]);
@@ -75,7 +82,7 @@ class PropertyController extends Controller
         $data = $request->validate([
             'nama' => 'required|string|max:255',
             'deskripsi' => 'required|string',
-            'gambar' => 'nullable|gambar|max:2048',
+            'gambar' => 'nullable|image|max:2048',
             'harga' => 'required|numeric',
             'lokasi' => 'required|string|max:255',
             'kategori' => 'required|string|max:255',

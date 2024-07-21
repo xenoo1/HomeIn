@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('harga', 15, 2);
             $table->string('lokasi');
             $table->string('kategori');
-            $table->enum('status', ['tersedia', 'terjual', 'disewa']);
+            $table->enum('status', ['tersedia', 'terjual']);
             $table->timestamps();
         });
     }
