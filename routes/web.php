@@ -1,13 +1,14 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderlistController;
-
 use App\Http\Controllers\Auth\LoginController;
-use App\Models\Orderlist;
+use App\Http\Controllers\Auth\RegisterController;
 
+use App\Models\Orderlist;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,11 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 #logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+#register
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);
+
 
 
 #property
