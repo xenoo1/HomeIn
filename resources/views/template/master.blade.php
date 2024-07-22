@@ -169,7 +169,7 @@
                                                             </div>
                                                             <div class="chat-info">
                                                                 <div class="chat-from">
-                                                                    <div class="name">Iliash Hossain</div>
+                                                                    <div class="name">alfa</div>
                                                                     <span class="time">Now</span>
                                                                 </div>
                                                                 <div class="chat-context">
