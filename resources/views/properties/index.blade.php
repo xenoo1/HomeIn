@@ -2,6 +2,14 @@
 @section('title','Manajemen Property Page')
 @section('heading','Selamat Datang Di Manajemen Properti anda')
 
+@section('add')
+<div class="row mb-3">
+    <div class="col-md-12">
+        <a href="{{ route('properties.create') }}" class="btn btn-primary">Tambah Property</a>
+    </div>
+</div>
+@endsection
+
 
 @section('content')
 
@@ -21,13 +29,7 @@
                                     <div class="card-header">{{ __('Property Management Page') }}</div>
                     
                                     <div class="card-body">
-                                        <div class="row mb-3">
-                                            <div class="col-md-12">
-                                                <a href="{{ route('properties.create') }}" class="btn btn-primary">Add New Property</a>
-                                                <a href="#" class="btn btn-secondary">Edit Existing Property</a>
-                                                <a href="#" class="btn btn-danger">Delete Property</a>
-                                            </div>
-                                        </div>
+                            
                     
                                         <div class="row">
                                             <div class="col-md-12">
@@ -55,7 +57,22 @@
                                                             <td>{{ $property->lokasi }}</td>
                                                             <td>{{ $property->kategori }}</td>
                                                             <td>{{ $property->status }}</td>
+                                                            <td class="tb-odr-action">
+                                                                <div class="tb-odr-btns d-none d-md-inline">
+                                                                    <a href="#" class="btn btn-sm btn-primary">View</a>
+                                                                </div>
+                                                                <div class="dropdown">
+                                                                    <a class="text-soft dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown" data-offset="-8,0"><em class="icon ni ni-more-h"></em></a>
+                                                                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs">
+                                                                        <ul class="link-list-plain">
+                                                                            <li><a href="edit" class="text-primary">Edit</a></li>
+                                                                            <li><a href="{{ route('properties.destroy', $property) }}" class="text-danger">Remove</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
                                                         </tr>
+                                                        
                                                         @endforeach
                                                     </tbody>
                                                 </table>

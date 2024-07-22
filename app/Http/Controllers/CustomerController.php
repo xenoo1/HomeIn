@@ -29,8 +29,28 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        Customer::create($request->all());
-        return redirect()->route('customers.index');
+        $request->validate([
+            
+            'nama' => 'required',
+            'email' => 'required',
+            'no_hp' => 'required',
+            'alamat' => 'required',
+            'etode_pembayaran' => 'required',
+            'property' => 'required',
+            'tatus' => 'required',
+        ]);
+
+        $customer = new Customer();
+        $customer->nama = $request->input('nama');
+        $customer->email = $request->input('email');
+        $customer->no_hp = $request->input('no_hp');
+        $customer->alamat = $request->input('alamat');
+        $customer->metode_pembayaran = $request->input('metode_pembayaran');
+        $customer->property = $request->input('property');
+        $customer->status = $request->input('status');
+        $customer->save();
+
+        //...
     }
 
     /**

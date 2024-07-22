@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('no_hp');
             $table->text('alamat');
+            $table->string('metode_pembayaran');
             $table->string('properti_dibeli')->nullable();
             $table->enum('status_pembayaran', ['unpaid', 'paid'])->default('unpaid');
             $table->timestamps();

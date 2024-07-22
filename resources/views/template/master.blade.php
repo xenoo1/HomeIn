@@ -389,8 +389,8 @@
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        {{-- <span class="lead-text">{{ Auth::user()->nama }}</span> --}}
+                                                        {{-- <span class="sub-text">{{ Auth::user()->email }}</span> --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -440,10 +440,12 @@
                                             <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                             <div class="toggle-expand-content" data-content="pageMenu">
                                                 <ul class="nk-block-tools g-3">
-                                                    <li>
-                                                        <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-bs-toggle="dropdown"><em class="icon ni ni-plus"></em><span><span class="d-md-none">Add</span><span class="d-none d-md-block">Add Campaign</span></span></a>
-                                                    </li>
-                                                    <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Reports</span></a></li>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            @yield('add')
+                                                            {{-- <a href="{{ route('properties.create') }}" class="btn btn-primary">Add New Property</a> --}}
+                                                        </div>
+                                                    </div>
                                                 </ul>
                                                
                                             </div>
