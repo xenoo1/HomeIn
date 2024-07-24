@@ -32,10 +32,6 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 #logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-#register
-Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('register', [RegisterController::class, 'register']);
-
 
 
 #property
