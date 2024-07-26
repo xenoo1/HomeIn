@@ -68,9 +68,7 @@
                                         <div class="card-inner p-0">
                                             <div class="nk-tb-list nk-tb-ulist">
                                                 <div class="nk-tb-item nk-tb-head">
-                                                    <div class="nk-tb-col nk-tb-col-check">
-                                                        
-                                                    </div>
+                                                    <div class="nk-tb-col nk-tb-col-check"></div>
                                                     <div class="nk-tb-col"><span class="sub-text">Nama</span></div>
                                                     <div class="nk-tb-col tb-col-sm"><span class="sub-text">Email</span></div>
                                                     <div class="nk-tb-col tb-col-md"><span class="sub-text">No Hp</span></div>
@@ -79,56 +77,52 @@
                                                     <div class="nk-tb-col tb-col-xxl"><span class="sub-text">Property</span></div>
                                                     <div class="nk-tb-col tb-col-lg"><span class="sub-text">Status</span></div>
                                                     <div class="nk-tb-col text-end"><span class="sub-text">Actions</span></div>
-                                                </div><!-- .nk-tb-item -->
-                                               
-
+                                                </div>
+                
                                                 @foreach ($customers as $customer)
-                                                    
-                                             
                                                 <div class="nk-tb-item">
                                                     <div class="nk-tb-col nk-tb-col-check">
                                                         <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                            <input type="checkbox" class="custom-control-input" id="cid1">
-                                                            <label class="custom-control-label" for="cid1"></label>
+                                                            <input type="checkbox" class="custom-control-input" id="cid{{ $customer->id }}">
+                                                            <label class="custom-control-label" for="cid{{ $customer->id }}"></label>
                                                         </div>
                                                     </div>
                                                     <div class="nk-tb-col">
-                                                        <a href="html/customer-details.html">
+                                                        <a href="{{ route('customers.show', $customer->id) }}">
                                                             <div class="user-card">
                                                                 <div class="user-avatar xs bg-primary">
-                                                                    <span>BG</span>
+                                                                    <span>{{ substr($customer->nama, 0, 2) }}</span>
                                                                 </div>
                                                                 <div class="user-name">
-                                                                    <span class="tb-lead">{{ $property->nama }}<span class="dot dot-success d-lg-none ms-1"></span></span>
+                                                                    <span class="tb-lead">{{ $customer->nama }}<span class="dot dot-success d-lg-none ms-1"></span></span>
                                                                 </div>
                                                             </div>
                                                         </a>
                                                     </div>
                                                     <div class="nk-tb-col tb-col-sm">
-                                                        <span class="sub-text">{{ $property->email }}</span>
+                                                        <span class="sub-text">{{ $customer->email }}</span>
                                                     </div>
                                                     <div class="nk-tb-col tb-col-md">
-                                                        <span class="sub-text">{{ $property->no_hp }}</span>
+                                                        <span class="sub-text">{{ $customer->no_hp }}</span>
                                                     </div>
                                                     <div class="nk-tb-col tb-col-lg">
-                                                        <span class="sub-text">{{ $property->alamat }}</span>
+                                                        <span class="sub-text">{{ $customer->alamat }}</span>
                                                     </div>
                                                     <div class="nk-tb-col tb-col-md">
                                                         <div class="icon-text">
-                                                            <em class="text-blue icon ni ni-visa"></em>
-                                                            <span class="sub-text">{{ $property->metode_pembayaran }}</span>
+                                                            <span class="sub-text">{{ $customer->metode_pembayaran }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="nk-tb-col tb-col-xxl">
-                                                        <span class="sub-text">{{ $property->property }}</span>
+                                                        <span class="sub-text">{{ $customer->jenis_property }}</span>
                                                     </div>
                                                     <div class="nk-tb-col tb-col-lg">
-                                                        <span class="tb-status text-success">{{ $property->status }}</span>
+                                                        <span class="tb-status text-success">{{ $customer->status }}</span>
                                                     </div>
                                                     <div class="nk-tb-col nk-tb-col-tools">
                                                         <ul class="nk-tb-actions gx-1">
                                                             <li class="nk-tb-action-hidden">
-                                                                <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Details">
+                                                                <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Details">
                                                                     <em class="icon ni ni-eye-fill"></em>
                                                                 </a>
                                                             </li>
@@ -144,10 +138,12 @@
                                                             </li>
                                                             <li>
                                                                 <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown">
+                                                                        <em class="icon ni ni-more-h"></em>
+                                                                    </a>
                                                                     <div class="dropdown-menu dropdown-menu-end">
                                                                         <ul class="link-list-opt no-bdr">
-                                                                            <li><a href="#"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                            <li><a href="{{ route('customers.show', $customer->id) }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                             <li><a href="#"><em class="icon ni ni-mail"></em><span>Send Mail</span></a></li>
                                                                             <li><a href="#"><em class="icon ni ni-cart"></em><span>Orders</span></a></li>
                                                                             <li><a href="#"><em class="icon ni ni-na"></em><span>Suspend</span></a></li>
@@ -157,11 +153,8 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                       
-                                                @endforeach
-                                                </div><!-- .nk-tb-item -->
-                                                <!-- .nk-tb-item -->
-                                            </div><!-- .nk-tb-list -->
+                                                </div>
+                                                @endforeach<!-- .nk-tb-list -->
                                         </div><!-- .card-inner -->
                                     
                                     </div><!-- .card-inner-group -->
