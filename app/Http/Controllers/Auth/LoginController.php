@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -26,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -39,14 +40,31 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 
-    public function logout(Request $request)
+      /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\View\View
+     */
+    // public function showLoginForm()
+    // {
+    //     return view('auth.login'); // Pastikan Anda memiliki view auth/login.blade.php
+    // }
+
+    // public function logout(Request $request)
+    // {
+    //     $this->guard()->logout();
+
+    //     $request->session()->invalidate();
+
+    //     $request->session()->regenerateToken();
+
+    //     return redirect('/');
+    // }
+    public function logout()
     {
-        $this->guard()->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
+        Auth::logout();
         return redirect('/');
     }
+
+    
 }

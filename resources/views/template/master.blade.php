@@ -151,7 +151,7 @@
                             <div class="nk-header-tools">
                                 <ul class="nk-quick-nav">
                                     <li class="dropdown chats-dropdown hide-mb-sm">
-                                        <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
+                                        <a href="" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
                                             <div class="icon-status icon-status-na"><em class="icon ni ni-comments"></em></div>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end">
@@ -338,41 +338,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    {{-- <li class="dropdown language-dropdown d-none d-sm-block me-n1">
-                                        <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
-                                            <div class="quick-icon border border-light">
-                                                <img class="icon" src="./images/flags/english-sq.png" alt="">
-                                            </div>
-                                        </a> --}}
-                                        {{-- <div class="dropdown-menu dropdown-menu-end">
-                                            <ul class="language-list">
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <img src="./images/flags/english.png" alt="" class="language-flag">
-                                                        <span class="language-name">English</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <img src="./images/flags/spanish.png" alt="" class="language-flag">
-                                                        <span class="language-name">Español</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <img src="./images/flags/french.png" alt="" class="language-flag">
-                                                        <span class="language-name">Français</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <img src="./images/flags/turkey.png" alt="" class="language-flag">
-                                                        <span class="language-name">Türkçe</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li> --}}
+                                   
                                     <!-- .dropdown -->
                                     <li class="dropdown user-dropdown">
                                         <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
@@ -389,8 +355,8 @@
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        {{-- <span class="lead-text">{{ Auth::user()->nama }}</span> --}}
-                                                        {{-- <span class="sub-text">{{ Auth::user()->email }}</span> --}}
+                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
+                                                        <span class="sub-text">info@softnio.com</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -402,18 +368,21 @@
                                                     <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
                                                 </ul>
                                             </div>
+                                            
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <form method="POST" action="{{ route('logout') }}">
-                                                        @csrf
-                                                        <li>
-                                                            <button type="submit" class="btn btn-link" style="text-decoration: none; color: inherit;">
-                                                                <em class="icon ni ni-signout"></em><span>Sign out</span>
+                                                    <li>
+                                                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                                            @csrf
+                                                            <button type="submit" style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;">
+                                                                <em class="icon ni ni-signout"></em><span>Logout</span>
                                                             </button>
-                                                        </li>
-                                                    </form>
+                                                        </form>
+                                                    </li>
                                                 </ul>
-                                            </div>                                            
+                                            </div>
+                                            
+                                          
                                         </div>
                                     </li>
                                 </ul>

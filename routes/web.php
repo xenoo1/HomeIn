@@ -20,50 +20,56 @@ use App\Models\Orderlist;
 |
 */
 
-// Route::get('/', function () {
-//     return view('template/master');
-// });
+Route::get('/', function () {
+    return view('landingpage');
+});
 
 Auth::routes();
 
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 #dashboard
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-#logout
+// logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+
+// register
+// Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+// Route::post('/register', [RegisterController::class, 'register']);
 
 
 #property
 Route::resource('/properties', PropertyController::class);
 
-Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');
-Route::get('/properties/create', [PropertyController::class, 'create'])->name('properties.create');
-Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
-Route::get('/properties/{property}', [PropertyController::class, 'show'])->name('properties.show');
-Route::get('/properties/{property}/edit', [PropertyController::class, 'edit'])->name('properties.edit');
-Route::put('/properties/{property}', [PropertyController::class, 'update'])->name('properties.update');
-Route::delete('/properties/{property}', [PropertyController::class, 'destroy'])->name('properties.destroy');
+// Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');
+// Route::get('/properties/create', [PropertyController::class, 'create'])->name('properties.create');
+// Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
+// Route::get('/properties/{property}', [PropertyController::class, 'show'])->name('properties.show');
+// Route::get('/properties/{property}/edit', [PropertyController::class, 'edit'])->name('properties.edit');
+// Route::put('/properties/{property}', [PropertyController::class, 'update'])->name('properties.update');
+// Route::delete('/properties/{property}', [PropertyController::class, 'destroy'])->name('properties.destroy');
 
 
 #customer
 Route::resource('/customers', CustomerController::class);
 
-Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
-Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
-Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
-Route::get('/customers/{customer}', [CustomerController::class, 'show'])->name('customers.show');
-Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
-Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customers.update');
-Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
+// Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+// Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
+// Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
+// Route::get('/customers/{customer}', [CustomerController::class, 'show'])->name('customers.show');
+// Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+// Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customers.update');
+// Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
 
 #orderlist
 Route::resource('/orderlist', OrderlistController::class);
 
-Route::get('/orderlist', [OrderlistController::class, 'index'])->name('orderlist.index');
-Route::get('/orderlist/create', [OrderlistController::class, 'create'])->name('orderlist.create');
-Route::post('/orderlist', [OrderlistController::class, 'store'])->name('orderlist.store');
-Route::get('/orderlist/{orderlist}', [OrderlistController::class, 'show'])->name('orderlist.show');
-Route::get('/orderlist/{orderlist}/edit', [OrderlistController::class, 'edit'])->name('orderlist.edit');
-Route::put('/orderlist/{orderlist}', [OrderlistController::class, 'update'])->name('orderlist.update');
-Route::delete('/orderlist/{orderlist}', [OrderlistController::class, 'destroy'])->name('orderlist.destroy');
+// Route::get('/orderlist', [OrderlistController::class, 'index'])->name('orderlist.index');
+// Route::get('/orderlist/create', [OrderlistController::class, 'create'])->name('orderlist.create');
+// Route::post('/orderlist', [OrderlistController::class, 'store'])->name('orderlist.store');
+// Route::get('/orderlist/{orderlist}', [OrderlistController::class, 'show'])->name('orderlist.show');
+// Route::get('/orderlist/{orderlist}/edit', [OrderlistController::class, 'edit'])->name('orderlist.edit');
+// Route::put('/orderlist/{orderlist}', [OrderlistController::class, 'update'])->name('orderlist.update');
+// Route::delete('/orderlist/{orderlist}', [OrderlistController::class, 'destroy'])->name('orderlist.destroy');

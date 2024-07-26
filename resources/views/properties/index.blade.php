@@ -154,8 +154,8 @@
                                                         </div>
                                                     </li>
                                                     <li class="nk-block-tools-opt">
-                                                        <a href="{{ route('properties.create') }}" data-target="addProperty" class="toggle btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
-                                                        <a href="{{ route('properties.create') }}" data-target="addProperty" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Product</span></a>
+                                                        <a href="{{ route('properties.create') }}" data-target="addProperty" class=" btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
+                                                        <a href="{{ route('properties.create') }}" data-target="addProperty" class=" btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Product</span></a>
                                                     </li>
                                                 </ul>
                                             </div>

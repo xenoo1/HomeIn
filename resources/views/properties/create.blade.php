@@ -31,7 +31,19 @@
                                                     <textarea name="deskripsi" id="deskripsi" class="form-control" required></textarea>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="gambar" class="form-label">Gambar</label>
+                                                    <label for="gambar" class="form-label">Gambar1 Depan</label>
+                                                    <input type="file" name="gambar" id="gambar" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="gambar" class="form-label">Gambar Belakang</label>
+                                                    <input type="file" name="gambar" id="gambar" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="gambar" class="form-label">Gambar Kiri</label>
+                                                    <input type="file" name="gambar" id="gambar" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="gambar" class="form-label">Gambar Kanan</label>
                                                     <input type="file" name="gambar" id="gambar" class="form-control">
                                                 </div>
                                                 <div class="mb-3">
