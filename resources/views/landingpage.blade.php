@@ -6,21 +6,75 @@
     <title>Property Landing Page</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
         .hero {
-            background: url('https://via.placeholder.com/1920x1080') no-repeat center center;
+            background-image: url("images/ghibli.png");
             background-size: cover;
+            background-position: center;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin: 20px;
         }
         .hero h1 {
             font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
         .hero p {
             font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .hero a {
+            font-size: 1.25rem;
+            padding: 10px 30px;
+            border-radius: 30px;
+        }
+        .navbar {
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .section-light {
+            background-color: #f8f9fa;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+        .footer a {
+            color: #adb5bd;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: white;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -59,17 +113,17 @@
     </div>
 
     <!-- About Section -->
-    <section id="about" class="py-5">
-        <div class="container">
-            <h2 class="text-center">About Us</h2>
-            <p class="text-center">We offer the best properties for you. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <section id="about" class="section">
+        <div class="container text-center">
+            <h2 class="section-title">About Us</h2>
+            <p>We offer the best properties for you. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
     </section>
 
     <!-- Properties Section -->
-    <section id="properties" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center">Our Properties</h2>
+    <section id="properties" class="section section-light">
+        <div class="container text-center">
+            <h2 class="section-title">Our Properties</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4">
@@ -106,5 +160,28 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5">
-     
+    <section id="contact" class="section">
+        <div class="container text-center">
+            <h2 class="section-title">Contact Us</h2>
+            <p>If you have any questions, feel free to contact us at info@property.com or call us at (123) 456-7890.</p>
+            <a class="btn btn-primary btn-lg" href="mailto:info@property.com">Email Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p>&copy; 2024 Property Listings. All Rights Reserved.</p>
+            <p>
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a> | 
+                <a href="#">Contact Us</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

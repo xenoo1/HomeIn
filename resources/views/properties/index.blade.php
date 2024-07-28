@@ -48,7 +48,13 @@
                                                             <td>{{ $property->id }}</td>
                                                             <td>{{ $property->nama }}</td>
                                                             <td>{{ $property->deskripsi }}</td>
-                                                            <td><img src="{{ $property->gambar }}" alt="Property Image" width="50"></td>
+                                                            <td>
+                                                                @if(isset($property->gambar))
+                                                                    <img src="{{ $property->gambar }}" alt="Property Image" width="50">
+                                                                @else
+                                                                    No image available
+                                                                @endif
+                                                            </td>
                                                             <td>{{ $property->harga }}</td>
                                                             <td>{{ $property->lokasi }}</td>
                                                             <td>{{ $property->kategori }}</td>
@@ -61,8 +67,13 @@
                                                                     <a class="text-soft dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown" data-offset="-8,0"><em class="icon ni ni-more-h"></em></a>
                                                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs">
                                                                         <ul class="link-list-plain">
-                                                                            <li><a href="edit" class="text-primary">Edit</a></li>
-                                                                            <li><a href="{{ route('properties.destroy', $property) }}" class="text-danger">Remove</a></li>
+                                                                            <li><a href="{{ route('properties.edit', ['property' => $property->id]) }}" class="text-primary">Edit</a></li>
+                                                                            {{-- <li><a href="{{ route('properties.destroy', $property) }}" class="text-danger">Remove</a></li> --}}
+                                                                            <form action="{{ route('properties.destroy', $property->id) }}" method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <button type="submit" class="btn btn-link text-danger">Hapus</button>
+                                                                            </form>
                                                                         </ul>
                                                                     </div>
                                                                 </div>

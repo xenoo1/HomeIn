@@ -34,7 +34,7 @@
                                                     <label for="gambar" class="form-label">Gambar1 Depan</label>
                                                     <input type="file" name="gambar" id="gambar" class="form-control">
                                                 </div>
-                                                <div class="mb-3">
+                                                {{-- <div class="mb-3">
                                                     <label for="gambar" class="form-label">Gambar Belakang</label>
                                                     <input type="file" name="gambar" id="gambar" class="form-control">
                                                 </div>
@@ -45,7 +45,7 @@
                                                 <div class="mb-3">
                                                     <label for="gambar" class="form-label">Gambar Kanan</label>
                                                     <input type="file" name="gambar" id="gambar" class="form-control">
-                                                </div>
+                                                </div> --}}
                                                 <div class="mb-3">
                                                     <label for="harga" class="form-label">Harga</label>
                                                     <input type="number" name="harga" id="harga" class="form-control" required>

@@ -74,33 +74,34 @@ class PropertyController extends Controller
 
     public function edit(Property $property)
     {
-        return view('properties.edit', ['property' => $property]);
+        // Tampilkan form edit data properti
+        return view('properties.edit', compact('property'));
     }
 
     public function update(Request $request, Property $property)
-    {
-        $data = $request->validate([
-            'nama' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'gambar' => 'nullable|image|max:2048',
-            'harga' => 'required|numeric',
-            'lokasi' => 'required|string|max:255',
-            'kategori' => 'required|string|max:255',
-            'status' => 'required|in:available,sold,rented',
-        ]);
+{
+    $data = $request->validate([
+        'nama' => 'required|string|max:255',
+        'deskripsi' => 'required|string',
+        'gambar' => 'nullable|image|max:2048',
+        'harga' => 'required|numeric',
+        'lokasi' => 'required|string|max:255',
+        'kategori' => 'required|string|max:255',
+        'status' => 'required|in:tersedia,terjual',
+    ]);
 
-        if ($request->hasFile('gambar')) {
-            $data['gambar'] = $request->file('gambar')->store('property_gambars', 'public');
-        }
-
-        $property->update($data);
-
-        return redirect()->route('properties.index');
+    if ($request->hasFile('gambar')) {
+        $data['gambar'] = $request->file('gambar')->store('property_gambars', 'public');
     }
 
-    public function destroy(Property $property)
+    $property->update($data);
+
+    return redirect()->route('properties.index')->with('success', 'Data properti berhasil diupdate');
+}
+    public function destroy($id)
     {
+        $property = Property::find($id);
         $property->delete();
-        return redirect()->route('properties.index')->with('success', 'Property deleted successfully!');
+        return redirect()->route('properties.index')->with('success', 'Property berhasil dihapus');
     }
 }

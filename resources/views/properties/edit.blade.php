@@ -3,32 +3,33 @@
 
 @section('content')
 <div class="container">
+    <h1>Edit Properti</h1>
     <form action="{{ route('properties.update', $property->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-3">
-            <label for="nama" class="form-label">Nama</label>
+            <label for="nama" class="form-label">Nama Properti</label>
             <input type="text" name="nama" id="nama" class="form-control" value="{{ $property->nama }}" required>
         </div>
         <div class="mb-3">
-            <label for="deskripsi" class="form-label">Deskripsi</label>
+            <label for="deskripsi" class="form-label">Deskripsi Properti</label>
             <textarea name="deskripsi" id="deskripsi" class="form-control" required>{{ $property->deskripsi }}</textarea>
         </div>
         <div class="mb-3">
-            <label for="gambar" class="form-label">Gambar</label>
+            <label for="gambar" class="form-label">Gambar Properti</label>
             <input type="file" name="gambar" id="gambar" class="form-control">
             <img src="{{ $property->gambar }}" alt="Property Image" width="50">
         </div>
         <div class="mb-3">
-            <label for="harga" class="form-label">Harga</label>
+            <label for="harga" class="form-label">Harga Properti</label>
             <input type="number" name="harga" id="harga" class="form-control" value="{{ $property->harga }}" required>
         </div>
         <div class="mb-3">
-            <label for="lokasi" class="form-label">Lokasi</label>
+            <label for="lokasi" class="form-label">Lokasi Properti</label>
             <input type="text" name="lokasi" id="lokasi" class="form-control" value="{{ $property->lokasi }}" required>
         </div>
         <div class="mb-3">
-            <label for="kategori" class="form-label">Kategori</label>
+            <label for="kategori" class="form-label">Kategori Properti</label>
             <select name="kategori" id="kategori" class="form-control" required>
                 <option value="rumah" {{ $property->kategori == 'rumah' ? 'selected' : '' }}>Rumah</option>
                 <option value="villa" {{ $property->kategori == 'villa' ? 'selected' : '' }}>Villa</option>
@@ -36,13 +37,13 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="status" class="form-label">Status</label>
+            <label for="status" class="form-label">Status Properti</label>
             <select name="status" id="status" class="form-control" required>
                 <option value="tersedia" {{ $property->status == 'tersedia' ? 'selected' : '' }}>Tersedia</option>
                 <option value="terjual" {{ $property->status == 'terjual' ? 'selected' : '' }}>Terjual</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Update Property</button>
+        <button type="submit" class="btn btn-primary">Update Properti</button>
     </form>
 </div>
 @endsection
