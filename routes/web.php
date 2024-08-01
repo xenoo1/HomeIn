@@ -23,8 +23,19 @@ use App\Models\Orderlist;
 Route::get('/', function () {
     return view('landingpage');
 });
+// Route::get('properties', function () {
+//     return view('property');
+// });
+
+
 
 Auth::routes();
+
+//landingpage
+Route::get('/about-us', 'AboutUsController@index')->name('about-us');
+Route::get('/properties', 'PropertiesController@index')->name('properties');
+Route::get('/services', 'ServicesController@index')->name('services');
+
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 #dashboard
@@ -73,3 +84,5 @@ Route::resource('/orderlist', OrderlistController::class);
 // Route::get('/orderlist/{orderlist}/edit', [OrderlistController::class, 'edit'])->name('orderlist.edit');
 // Route::put('/orderlist/{orderlist}', [OrderlistController::class, 'update'])->name('orderlist.update');
 // Route::delete('/orderlist/{orderlist}', [OrderlistController::class, 'destroy'])->name('orderlist.destroy');
+
+
