@@ -1,84 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
 
-    <link rel="stylesheet" href="{{ asset('./global.css') }}" />
-    <link rel="stylesheet" href="{{ asset('./PropertiesPageDesktop.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/global.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/PropertiesPageDesktop.css') }}">
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap"
-    />
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap">
   </head>
   <body>
     <div class="properties-page-desktop">
-      <section class="header">
-        <div class="banner">
-          <img
-            class="abstract-design-icon"
-            alt=""
-            src="./images/abstract-design.svg"
-          />
-        </div>
-        <header class="frame-parent">
-          <div class="frame-wrapper">
-            <div class="frame-group">
-              <div class="frame-container">
-                <div class="text-parent">
-                  <div class="text">
-                    ✨Discover Your Dream Property with Estatein
-                  </div>
-                  <div class="text-button">Learn More</div>
-                </div>
-              </div>
-              <div class="button">
-                <img class="icon" alt="" src="./images/icon.svg" />
-              </div>
-            </div>
-          </div>
-          <div class="navigation-bar">
-            <div class="navigation-bar-inner">
-              <div class="symbol-parent">
-                <img
-                  class="symbol-icon"
-                  loading="lazy"
-                  alt=""
-                  src="./images/symbol.svg"
-                />
-
-                <div class="text-wrapper">
-                  <img
-                    class="text-icon"
-                    loading="lazy"
-                    alt=""
-                    src="./images/text.svg"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="navigation-bar-child">
-              <nav class="frame-nav">
-                <div class="text-button-wrapper">
-                  <div class="text-button1">Home</div>
-                </div>
-                <div class="text-button-wrapper">
-                  <div class="text-button2">About Us</div>
-                </div>
-                <div class="button1">
-                  <div class="text1">Properties</div>
-                </div>
-                <div class="text-button-wrapper">
-                  <div class="text-button3">Services</div>
-                </div>
-              </nav>
-            </div>
-            <button class="button2">
-              <div class="text2">Contact Us</div>
-            </button>
-          </div>
-        </header>
-      </section>
+      @component('layouts.navbar')
+            
+      @endcomponent
       <section class="container-wrapper">
         <div class="container">
           <div class="text-container">

@@ -33,7 +33,7 @@ Auth::routes();
 
 //landingpage
 Route::get('/about-us', 'AboutUsController@index')->name('about-us');
-Route::get('/properties', 'PropertiesController@index')->name('properties');
+Route::get('/property', [PropertyController::class, 'property'])->name('property');
 Route::get('/services', 'ServicesController@index')->name('services');
 
 
@@ -43,7 +43,7 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 
 // logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 
 // register

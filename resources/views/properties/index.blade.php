@@ -32,33 +32,27 @@
                                                 <table class="table table-striped">
                                                     <thead>
                                                         <tr>
-                                                            <th>ID</th>
-                                                            <th>nama</th>
-                                                            <th>deskripsi</th>
-                                                            <th>gambar</th>
+                                                            
+                                                            <th>Nama Property</th>
+                                                            <th>Deskripsi</th>
+                                                            <th>Tanggal</th>
                                                             <th>harga</th>
                                                             <th>lokasi</th>
-                                                            <th>kategori</th>
-                                                            <th>Status</th>
+                                                            <th>Tipe Rumah</th>
+                                                            
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach($properties as $property)
                                                         <tr>
-                                                            <td>{{ $property->id }}</td>
-                                                            <td>{{ $property->nama }}</td>
+                                                          
+                                                            <td>{{ $property->nama_property }}</td>
                                                             <td>{{ $property->deskripsi }}</td>
-                                                            <td>
-                                                                @if(isset($property->gambar))
-                                                                    <img src="{{ $property->gambar }}" alt="Property Image" width="50">
-                                                                @else
-                                                                    No image available
-                                                                @endif
-                                                            </td>
+                                                            <td>{{ $property->tanggal }}</td>
                                                             <td>{{ $property->harga }}</td>
                                                             <td>{{ $property->lokasi }}</td>
-                                                            <td>{{ $property->kategori }}</td>
-                                                            <td>{{ $property->status }}</td>
+                                                            <td>{{ $property->tipe_rumah }}</td>
+                                                          
                                                             <td class="tb-odr-action">
                                                                 <div class="tb-odr-btns d-none d-md-inline">
                                                                     <a href="{{ route('properties.show', $property) }}" class="btn btn-sm btn-primary">View</a>
