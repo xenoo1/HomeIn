@@ -101,6 +101,12 @@ class PropertyController extends Controller
 
         return redirect()->route('properties.index')->with('success', 'Property berhasil diupdate');
     }
+    public function show($id)
+    {
+    $property = Property::findOrFail($id);
+    return view('properties.show', compact('property'));
+    }
+
     public function destroy($id)
     {
         $property = Property::find($id);
