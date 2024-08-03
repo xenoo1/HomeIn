@@ -76,7 +76,7 @@ class PropertyController extends Controller
         return view('properties.edit', compact('property'));
     }
 
-    public function update(Request $request, Property $property)
+    public function update(Request $request, $id)
     {
         $data = $request->validate([
             'nama_property' => 'required|string|max:255',
@@ -84,23 +84,52 @@ class PropertyController extends Controller
             'deskripsi' => 'required|string',
             'harga' => 'required|numeric',
             'gambar' => 'nullable|image|max:2048',
+            // 'tanggal' => 'required|date',
             'tipe_rumah' => 'required|in:31,42,53,81,72,36',
             'kamar_tidur' => 'required|integer|min:1',
             'kamar_mandi' => 'required|integer|min:1',
             'luas' => 'required|numeric',
+            // 'galeri.*' => 'nullable|image|max:2048',
         ]);
-
-        if ($request->hasFile('image_path')) {
-            if ($property->image_path) {
-                Storage::disk('public')->delete($property->image_path);
+    
+        $property = Property::findOrFail($id);
+        $property->nama_property = $data['nama_property'];
+        $property->alamat = $data['alamat'];
+        $property->deskripsi = $data['deskripsi'];
+        $property->harga = $data['harga'];
+       
+        $property->tipe_rumah = $data['tipe_rumah'];
+        $property->kamar_tidur = $data['kamar_tidur'];
+        $property->kamar_mandi = $data['kamar_mandi'];
+        $property->luas = $data['luas'];
+        // $property->update($data);
+    
+        if ($request->hasFile('gambar')) {
+            // Hapus gambar lama jika ada
+            if ($property->gambar) {
+                Storage::disk('public')->delete($property->gambar);
             }
-            $data['image_path'] = $request->file('image_path')->store('property_images', 'public');
+            $property->gambar = $request->file('gambar')->store('gambar', 'public');
         }
-
-        $property->update($data);
-
-        return redirect()->route('properties.index')->with('success', 'Property berhasil diupdate');
+    
+        // if ($request->hasFile('galeri')) {
+        //     // Hapus gambar galeri lama jika ada
+        //     foreach ($property->galeri as $gambar) {
+        //         Storage::disk('public')->delete($gambar->path);
+        //         $gambar->delete();
+        //     }
+        //     // Simpan gambar galeri baru
+        //     foreach ($request->file('galeri') as $file) {
+        //         $path = $file->store('galeri', 'public');
+        //         $property->galeri()->create(['path' => $path]);
+        //     }
+        // }
+    
+        $property->save();
+    
+        return redirect()->route('properties.index')->with('success', 'Property berhasil diperbarui');
     }
+    
     public function show($id)
     {
     $property = Property::findOrFail($id);

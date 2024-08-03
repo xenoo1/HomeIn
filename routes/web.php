@@ -62,7 +62,7 @@ Route::get('/properties/create', [PropertyController::class, 'create'])->name('p
 Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
 Route::get('/properties/{property}', [PropertyController::class, 'show'])->name('properties.show');
 Route::get('/properties/{property}/edit', [PropertyController::class, 'edit'])->name('properties.edit');
-Route::put('/properties/{property}', [PropertyController::class, 'update'])->name('properties.update');
+Route::put('/properties/{id}', [PropertyController::class, 'update'])->name('properties.update');
 Route::delete('/properties/{id}', [PropertyController::class, 'destroy'])->name('properties.destroy');
 
  
