@@ -36,6 +36,9 @@ Route::get('/about-us', 'AboutUsController@index')->name('about-us');
 Route::get('/property', [PropertyController::class, 'property'])->name('property');
 Route::get('/services', 'ServicesController@index')->name('services');
 
+Route::get('/detailproperty', [PropertyController::class, 'detailproperty'])->name('detailproperty');
+
+
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 #dashboard

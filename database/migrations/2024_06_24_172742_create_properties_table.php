@@ -19,8 +19,7 @@ class CreatePropertiesTable extends Migration
             $table->string('alamat');
             $table->text('deskripsi');
             $table->decimal('harga', 15, 2);
-            $table->string('image_path')->nullable();
-            $table->date('tanggal');
+            $table->string('gambar')->nullable();    
             $table->enum('tipe_rumah', ['31', '42', '53', '81', '72', '36']);
             $table->integer('kamar_tidur');
             $table->integer('kamar_mandi');

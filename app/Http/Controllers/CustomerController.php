@@ -35,9 +35,9 @@ class CustomerController extends Controller
             'email' => 'required',
             'no_hp' => 'required',
             'alamat' => 'required',
-            'etode_pembayaran' => 'required',
+            'metode_pembayaran' => 'required',
             'property' => 'required',
-            'tatus' => 'required',
+            'status' => 'required',
         ]);
 
         $customer = new Customer();

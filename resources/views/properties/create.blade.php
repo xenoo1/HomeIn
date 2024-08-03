@@ -79,9 +79,9 @@
                                 <div class="nk-block nk-block-lg">
                                     <div class="nk-block-head">
                                         <div class="nk-block-head-content">
-                                            <h4 class="title nk-block-title">Basic Form Style - S2</h4>
+                                            <h4 class="title nk-block-title">Tambah Property</h4>
                                             <div class="nk-block-des">
-                                                <p>You can alow display form in column as example below.</p>
+                                                <p>Tambahkan Property Anda</p>
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                                         <div class="form-group">
                                                             <label class="form-label" for="harga">Harga</label>
                                                             <div class="form-control-wrap">
-                                                                <input type="numbe" class="form-control" name="harga" id="harga" required>
+                                                                <input type="integer" class="form-control" name="harga" id="harga" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -143,7 +143,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
+                                                    {{-- <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Tanggal</label>
                                                             <div class="form-control-wrap">
@@ -153,7 +153,7 @@
                                                                 <input type="text" class="form-control date-picker" name="tanggal" required>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                    
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
@@ -174,7 +174,7 @@
                                                         <div class="form-group">
                                                             <label class="form-label" for="kamar_tidur">Jumlah Kamar Tidur</label>
                                                             <div class="form-control-wrap">
-                                                                <input type="text" class="form-control" name="kamar_tidur" id="kamar_tidur" required>
+                                                                <input type="number" class="form-control" name="kamar_tidur" id="kamar_tidur" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -182,7 +182,7 @@
                                                         <div class="form-group">
                                                             <label class="form-label" for="kamar_mandi">Jumlah Kamar Mandi</label>
                                                             <div class="form-control-wrap">
-                                                                <input type="text" class="form-control" name="kamar_mandi" id="kamar_mandi" required>
+                                                                <input type="number" class="form-control" name="kamar_mandi" id="kamar_mandi" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -190,7 +190,7 @@
                                                         <div class="form-group">
                                                             <label class="form-label" for="luas">Luas</label>
                                                             <div class="form-control-wrap">
-                                                                <input type="text" class="form-control" name="luas" id="luas" required>
+                                                                <input type="number" class="form-control" name="luas" id="luas" required>
                                                             </div>
                                                         </div>
                                                     </div>   

@@ -40,37 +40,34 @@ class PropertyController extends Controller
         return view('property');
     }
 
+    public function detailproperty(){
+        return view('detailproperty');
+    }
+
     public function create()
     {
         return view('properties.create');
     }
 
-   public function store(Request $request)
+    public function store(Request $request)
     {
-        $data = $request->validate([
-            'nama_property' => 'required|string|max:255',
-            'alamat' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'harga' => 'required|numeric',
-            'image_path' => 'nullable|image|max:2048',
-            'tanggal' => 'required|date',
-            'tipe_rumah' => 'required|in:31,42,53,81,72,36',
-            'kamar_tidur' => 'required|integer|min:1',
-            'kamar_mandi' => 'required|integer|min:1',
-            'luas' => 'required|numeric',
-        ]);
+        $property = new Property();
+        $property->nama_property = $request->input('nama_property');
+        $property->alamat = $request->input('alamat');
+        $property->deskripsi = $request->input('deskripsi');
+        $property->harga = str_replace('.', '', $request->input('harga'));
+        $property->tipe_rumah = $request->input('tipe_rumah');
+        $property->kamar_tidur = $request->input('kamar_tidur');
+        $property->kamar_mandi = $request->input('kamar_mandi');
+        $property->luas = $request->input('luas');
 
-        if ($request->hasFile('image_path')) {
-            $data['image_path'] = $request->file('image_path')->store('property_images', 'public');
+        if ($request->hasFile('gambar')) {
+            $property->gambar = $request->file('gambar')->store('public/gambar');
         }
 
-        Property::create($data);
-
-        return redirect()->route('properties.index')->with('success', 'Property berhasil ditambahkan');
-    }
-    public function show(Property $property)
-    {
-        return view('properties.show', ['property' => $property]);
+        $property->save();
+    
+        return redirect()->route('properties.index')->with('success', 'Data property berhasil disimpan');
     }
 
     public function edit(Property $property)
@@ -86,8 +83,7 @@ class PropertyController extends Controller
             'alamat' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'harga' => 'required|numeric',
-            'image_path' => 'nullable|image|max:2048',
-            'tanggal' => 'required|date',
+            'gambar' => 'nullable|image|max:2048',
             'tipe_rumah' => 'required|in:31,42,53,81,72,36',
             'kamar_tidur' => 'required|integer|min:1',
             'kamar_mandi' => 'required|integer|min:1',

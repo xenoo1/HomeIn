@@ -32,12 +32,12 @@
                                                 <table class="table table-striped">
                                                     <thead>
                                                         <tr>
-                                                            
+                                                            <th>NO</th>
                                                             <th>Nama Property</th>
                                                             <th>Deskripsi</th>
-                                                            <th>Tanggal</th>
-                                                            <th>harga</th>
-                                                            <th>lokasi</th>
+                                                            {{-- <th>Tanggal</th> --}}
+                                                            <th>Harga</th>
+                                                            <th>Alamat</th>
                                                             <th>Tipe Rumah</th>
                                                             
                                                         </tr>
@@ -45,12 +45,12 @@
                                                     <tbody>
                                                         @foreach($properties as $property)
                                                         <tr>
-                                                          
+                                                            <td>{{ $loop->iteration }}</td>
                                                             <td>{{ $property->nama_property }}</td>
                                                             <td>{{ $property->deskripsi }}</td>
-                                                            <td>{{ $property->tanggal }}</td>
+                                                            {{-- <td>{{ $property->tanggal }}</td> --}}
                                                             <td>{{ $property->harga }}</td>
-                                                            <td>{{ $property->lokasi }}</td>
+                                                            <td>{{ $property->alamat }}</td>
                                                             <td>{{ $property->tipe_rumah }}</td>
                                                           
                                                             <td class="tb-odr-action">

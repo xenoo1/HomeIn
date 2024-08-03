@@ -25,12 +25,12 @@
           </button>
         </div> --}}
         <nav class="navigation-bar-inner2"> 
-          <nav class="text-button-parent">
-            <a href="" class="text102">Home</a>
-            <a href="" class="text-button21">About Us</a>
-            <a href="{{ route('property') }}" class="text-button22">Properties</a>
-            <a href="" class="text-button23">Services</a>
-        </nav>
+              <nav class="text-button-parent">
+                <a href=""><div class="text102">Home</div></a>
+                <a href=""><div class="text-button21">About Us</div></a>
+                <a href="{{ route('property') }}"><div class="text-button22">Properties</div></a>
+                <a href=""><div class="text-button23">Services</div></a>
+              </nav> 
         </nav>
         <form action="{{ route('login') }}" method="GET">
         <button type="submit" class="button73">
