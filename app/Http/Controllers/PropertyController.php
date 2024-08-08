@@ -36,8 +36,10 @@ class PropertyController extends Controller
         return view('properties.index', ['properties' => $properties->get()]);
     }
 
-    public function property(){
-        return view('property');
+    public function property()
+    {
+        $properties = Property::all(); // retrieve all properties from database
+        return view('property', compact('properties'));
     }
 
     public function detailproperty(){

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,9 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('no_hp');
             $table->text('alamat');
-            $table->string('metode_pembayaran');
-            $table->string('properti_dibeli')->nullable();
-            $table->enum('status_pembayaran', ['unpaid', 'paid'])->default('unpaid');
             $table->timestamps();
         });
     }

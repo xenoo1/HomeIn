@@ -12,49 +12,60 @@
   </head>
   <body>
     <div class="properties-page-desktop">
-      <section class="header4">
-           
-        <header class="frame-parent34">
-      
-          <nav class="navigation-bar4">
-            <div class="symbol-wrapper">
-              <img
-                class="symbol-icon8"
-                loading="lazy"
-                alt="Symbol Icon"
-                src="./images/symbol.svg"
-            />
+      <section class="header">
+        <div class="banner">
+          <img
+            class="abstract-design-icon"
+            alt=""
+            src="images/abstract-design.svg"
+          />
+        </div>
+        <header class="frame-parent">
+          
+          <div class="navigation-bar">
+            <div class="navigation-bar-inner">
+              <div class="symbol-parent">
+                <img
+                  class="symbol-icon"
+                  loading="lazy"
+                  alt=""
+                  src="images/symbol.svg"
+                />
+
+                <div class="text-wrapper">
+                  <img
+                    class="text-icon"
+                    loading="lazy"
+                    alt=""
+                    src="images/text.svg"
+                  />
+                </div>
+              </div>
             </div>
-            <div class="text-wrapper4">
-              <img
-                class="text-icon8"
-                loading="lazy"
-                alt="Text Icon"
-                src="./images/text.svg"
-              />
+            <div class="navigation-bar-child">
+              <nav class="frame-nav">
+                <div class="text-button-wrapper">
+                  <div class="text-button1">Home</div>
+                </div>
+                <div class="text-button-wrapper">
+                  <div class="text-button2">About Us</div>
+                </div>
+                <div class="text-button-wrapper">
+                  <div class="text-button3">Properties</div>
+                </div>
+                <div class="text-button-wrapper">
+                  <div class="text-button4">Services</div>
+                </div>
+              </nav>
             </div>
-            {{-- <div class="button-wrapper">
-              <button class="button72">
-                
-              </button>
-            </div> --}}
-            <nav class="navigation-bar-inner2"> 
-                  <nav class="text-button-parent">
-                    <a href=""><div class="text102">Home</div></a>
-                    <a href=""><div class="text-button21">About Us</div></a>
-                    <a href="{{ route('property') }}"><div class="text-button22">Properties</div></a>
-                    <a href=""><div class="text-button23">Services</div></a>
-                  </nav> 
-            </nav>
-            <form action="{{ route('login') }}" method="GET">
-            <button type="submit" class="button73">
-              <div class="text103">Login</div>         
+            <button class="button2">
+              <div class="text2">Contact Us</div>
             </button>
-            </form>
-          </nav>
+          </div>
         </header>
       </section>
-      <section class="container-wrapper">
+      {{-- filter pencarian property --}}
+      {{-- <section class="container-wrapper">
         <div class="container">
           <div class="text-container">
             <h1 class="heading">Find Your Dream Property</h1>
@@ -135,35 +146,11 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
       <section class="properties-page-desktop-inner">
         <div class="frame-div">
           <div class="frame-parent1">
             <div class="frame-parent2">
-              <div class="frame-parent3">
-                <img
-                  class="frame-child"
-                  loading="lazy"
-                  alt=""
-                  src="./images/frame-3186.svg"
-                />
-
-                <div class="frame-wrapper1">
-                  <div class="frame-parent4">
-                    <img
-                      class="frame-item"
-                      alt=""
-                      src="./images/frame-3187.svg"
-                    />
-
-                    <img
-                      class="frame-inner"
-                      alt=""
-                      src="./images/frame-3188.svg"
-                    />
-                  </div>
-                </div>
-              </div>
               <div class="heading-wrapper">
                 <h1 class="heading1">Discover a World of Possibilities</h1>
               </div>
@@ -179,44 +166,42 @@
           <div class="cards-container">
             <div class="sub-container1">
               <div class="items-container">
-                <div class="card">
-                  <img
-                    class="image-icon"
-                    loading="lazy"
-                    alt=""
-                    src="./images/image@2x.png"
-                  />
-
-                  <div class="container8">
-                    <div class="sub-container2">
-                      <div class="text-container1">
-                        <div class="text10">
-                          Coastal Escapes - Where Waves Beckon
-                        </div>
+                {{-- property 1 --}}
+                <div class="cards-container">
+                  @foreach($properties as $property)
+                      <div class="card">
+                          <img
+                              class="image-icon"
+                              loading="lazy"
+                              alt=""
+                              src="{{ $property->image_url }}" // assume you have an image_url column in your database
+                          />
+                          <div class="container8">
+                              <div class="sub-container2">
+                                  <div class="text-container1">
+                                      <div class="text10">{{ $property->lokasi }}</div>
+                                  </div>
+                                  <div class="text-container2">
+                                      <div class="heading2">{{ $property->nama_property }}</div>
+                                      <div class="paragraph2">
+                                          <span>{{ $property->deskripsi }}</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="sub-container3">
+                                  <div class="text-container3">
+                                      <div class="text11">Price</div>
+                                      <div class="number">IDR {{ $property->harga }}</div>
+                                  </div>
+                                  <button class="button9">
+                                      <div class="text12">View Property Details</div>
+                                  </button>
+                              </div>
+                          </div>
                       </div>
-                      <div class="text-container2">
-                        <div class="heading2">Seaside Serenity Villa</div>
-                        <div class="paragraph2">
-                          <span
-                            >Wake up to the soothing melody of waves. This
-                            beachfront villa offers...
-                          </span>
-                          <span class="read-more">Read More</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="sub-container3">
-                      <div class="text-container3">
-                        <div class="text11">Price</div>
-                        <div class="number">$1,250,000</div>
-                      </div>
-                      <button class="button9">
-                        <div class="text12">View Property Details</div>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
+                  @endforeach
+              </div>
+                {{-- <div class="card">
                   <img
                     class="image-icon"
                     alt=""
@@ -287,192 +272,7 @@
                       </button>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="container11">
-                <input class="text19" placeholder="01 of 10" type="text" />
-
-                <div class="buttons-container">
-                  <div class="button12">
-                    <img
-                      class="frame-child"
-                      alt=""
-                      src="./images/icon-12.svg"
-                    />
-                  </div>
-                  <div class="button13">
-                    <img
-                      class="frame-child"
-                      alt=""
-                      src="./images/icon-13.svg"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="frame-parent5">
-            <div class="frame-parent2">
-              <div class="frame-parent3">
-                <img class="frame-child" alt="" src="./images/frame-3186.svg" />
-
-                <div class="frame-wrapper1">
-                  <div class="frame-parent4">
-                    <img
-                      class="frame-item"
-                      alt=""
-                      src="./images/frame-3187.svg"
-                    />
-
-                    <img
-                      class="frame-inner"
-                      alt=""
-                      src="./images/frame-3188.svg"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="heading-wrapper">
-                <h1 class="heading1">Let's Make it Happen</h1>
-              </div>
-            </div>
-            <div class="paragraph-wrapper">
-              <div class="paragraph1">
-                Ready to take the first step toward your dream property? Fill
-                out the form below, and our real estate wizards will work their
-                magic to find your perfect match. Don't wait; let's embark on
-                this exciting journey together.
-              </div>
-            </div>
-          </div>
-          <div class="form-container">
-            <div class="form">
-              <div class="container12">
-                <div class="sub-container8">
-                  <div class="heading6">First Name</div>
-                  <div class="input-field6">
-                    <input
-                      class="placeholder"
-                      placeholder="Enter First Name"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <div class="sub-container8">
-                  <div class="heading6">Last Name</div>
-                  <div class="input-field6">
-                    <input
-                      class="placeholder"
-                      placeholder="Enter Last Name"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <div class="sub-container8">
-                  <div class="heading6">Email</div>
-                  <div class="input-field6">
-                    <input
-                      class="placeholder"
-                      placeholder="Enter your Email"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <div class="sub-container8">
-                  <div class="heading6">Phone</div>
-                  <div class="input-field6">
-                    <input
-                      class="placeholder"
-                      placeholder="Enter Phone Number"
-                      type="text"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="container12">
-                <div class="sub-container8">
-                  <div class="heading6">Preferred Location</div>
-                  <div class="input-field10">
-                    <div class="text20">Select Location</div>
-                    <img class="icon" alt="" src="./images/icon-14.svg" />
-                  </div>
-                </div>
-                <div class="sub-container8">
-                  <div class="heading6">Property Type</div>
-                  <div class="input-field10">
-                    <div class="text20">Select Property Type</div>
-                    <img class="icon" alt="" src="./images/icon-14.svg" />
-                  </div>
-                </div>
-                <div class="sub-container8">
-                  <div class="heading6">No. of Bathrooms</div>
-                  <div class="input-field10">
-                    <div class="text20">Select no. of Bedrooms</div>
-                    <img class="icon" alt="" src="./images/icon-14.svg" />
-                  </div>
-                </div>
-                <div class="sub-container8">
-                  <div class="heading6">No. of Bedrooms</div>
-                  <div class="input-field10">
-                    <div class="text20">Select no. of Bedrooms</div>
-                    <img class="icon" alt="" src="./images/icon-14.svg" />
-                  </div>
-                </div>
-              </div>
-              <div class="sub-container-parent">
-                <div class="heading-parent">
-                  <div class="heading6">Budget</div>
-                  <div class="input-field14">
-                    <div class="placeholder4">Select Budget</div>
-                    <img class="icon" alt="" src="./images/icon-18.svg" />
-                  </div>
-                </div>
-                <div class="heading-parent">
-                  <div class="heading6">Preferred Contact Method</div>
-                  <div class="input-field-parent">
-                    <div class="input-field15">
-                      <img class="icon19" alt="" src="./images/icon-19.svg" />
-
-                      <div class="value">
-                        <div class="value1">Enter Your Number</div>
-                      </div>
-                      <div class="shape">
-                        <div class="shape1"></div>
-                      </div>
-                    </div>
-                    <div class="input-field15">
-                      <img class="icon" alt="" src="./images/icon-20.svg" />
-
-                      <div class="text-frame">
-                        <div class="value1">Enter Your Email</div>
-                      </div>
-                      <div class="shape-wrapper">
-                        <div class="shape2"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="heading-group">
-                <div class="heading6">Message</div>
-                <div class="input-field17">
-                  <div class="placeholder5">Enter your Message here..</div>
-                </div>
-              </div>
-              <div class="frame-parent9">
-                <div class="frame-wrapper3">
-                  <div class="shape-parent">
-                    <div class="shape3"></div>
-                    <div class="text25">
-                      I agree with
-                      <span class="terms-of-use">Terms of Use</span> and
-                      <span class="terms-of-use">Privacy Policy</span>
-                    </div>
-                  </div>
-                </div>
-                <button class="button14">
-                  <div class="button-label">Send Your Message</div>
-                </button>
+                </div> --}}
               </div>
             </div>
           </div>
