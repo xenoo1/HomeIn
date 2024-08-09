@@ -28,22 +28,18 @@
                         <div class="nav-actions">
                             <nav class="nav-buttons1">
                                 <div class="nav-button-links">
-                                    <div class="text-button17">Home</div>
-                                </div>
-                                <div class="nav-button-links">
-                                    <div class="text-button18">About Us</div>
+                                    <a href="{{ route('landingpage') }}" class="text-button17">Home</a>
                                 </div>
                                 <div class="button51">
-                                    <div class="login-label">Properties</div>
-                                </div>
-                                <div class="nav-button-links">
-                                    <div class="text-button19">Services</div>
+                                    <a href="{{ route('property') }}" class="login-label">Properties</a>
                                 </div>
                             </nav>
                         </div>
-                        <button class="button52">
-                            <div class="signup-label">Contact Us</div>
-                        </button>
+                        <a href="{{ route('login') }}">
+                            <button class="button52">
+                                <div class="signup-label">Login</div>
+                            </button>
+                        </a>
                     </div>
                 </header>
             </div>
@@ -197,7 +193,7 @@
                                                 placeholder="masukkan nama anda" type="text" required />
                                         </div>
                                     </div>
-                                
+
                                 </div>
                                 <div class="container78">
                                     <div class="sub-container38">

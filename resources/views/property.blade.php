@@ -17,12 +17,10 @@
                 <img class="abstract-design-icon" alt="" src="images/abstract-design.svg" />
             </div>
             <header class="frame-parent">
-
                 <div class="navigation-bar">
                     <div class="navigation-bar-inner">
                         <div class="symbol-parent">
                             <img class="symbol-icon" loading="lazy" alt="" src="images/symbol.svg" />
-
                             <div class="text-wrapper">
                                 <img class="text-icon" loading="lazy" alt="" src="images/text.svg" />
                             </div>
@@ -37,19 +35,16 @@
                             </div>
                             <div class="text-button-wrapper">
                                 <a href="{{ route('property') }}">
-                                    <div class="text-button3">Properties</div>
-                                </a>
-                            </div>
-                            <div class="text-button-wrapper">
-                                <a href="{{ route('services') }}">
-                                    <div class="text-button4">Services</div>
+                                    <div class="text-button2">Properties</div>
                                 </a>
                             </div>
                         </nav>
                     </div>
-                    <button class="button2">
-                        <div class="text2">Contact Us</div>
-                    </button>
+                    <a href="{{ route('login') }}">
+                        <button class="button2">
+                            <div class="text2">Login</div>
+                        </button>
+                    </a>
                 </div>
             </header>
         </section>
