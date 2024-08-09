@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Orderlist;
 use App\Models\Property;
+use App\Models\Notification;
+
+
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -42,6 +45,10 @@ class CustomerController extends Controller
             $orderlist->property_id = $request->input('property_id');
             $orderlist->status = 'pending';
             $orderlist->save();
+
+            $property = Property::find($request->input('property_id'));
+            $notificationController = new NotificationController();
+            $notification = $notificationController->createNotification($customer, $property);
         }
 
         // Redirect ke WhatsApp admin
