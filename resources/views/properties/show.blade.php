@@ -93,13 +93,7 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            <div class="images-container">
-                                @foreach (File::files(public_path('galery')) as $file)
-                                    <img class="image-icon9" loading="lazy"
-                                        alt="{{ pathinfo($file->getFilename(), PATHINFO_FILENAME) }}"
-                                        src="{{ asset('galery/' . $file->getFilename()) }}" />
-                                @endforeach
-                            </div>
+                             
                         </div>
                         <div class="form-group mt-4">
                             <a href="{{ route('properties.index') }}" class="btn btn-secondary">Back to List</a>

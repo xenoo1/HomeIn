@@ -165,8 +165,18 @@
                             <div class="cards-container">
                                 @foreach ($properties as $property)
                                     <div class="card">
-                                        <img class="image-icon" loading="lazy" alt=""
-                                            src="{{ $property->gambar }}" />
+                                        @php
+                                        $files = File::files(public_path('galery'));
+                                        $firstFile = !empty($files) ? $files[0] : null;
+                                        @endphp
+                                        
+                                        @if ($firstFile)
+                                            <img class="image-icon" loading="lazy" 
+                                                alt="{{ pathinfo($firstFile->getFilename(), PATHINFO_FILENAME) }}" 
+                                                src="{{ asset('galery/' . $firstFile->getFilename()) }}" />
+                                        @else
+                                            <p>No images found in the gallery.</p>
+                                        @endif
                                         <div class="container8">
                                             <div class="sub-container2">
                                                 <div class="text-container1">

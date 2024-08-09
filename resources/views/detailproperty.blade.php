@@ -79,7 +79,7 @@
                                     @foreach (File::files(public_path('galery')) as $file)
                                         <img class="image-icon18"
                                             alt="{{ pathinfo($file->getFilename(), PATHINFO_FILENAME) }}"
-                                            src="{{ asset('galery/' . $file->getFilename()) }}" />
+                                            src="{{ asset('galer/' . $file->getFilename()) }}" />
                                     @endforeach
                                 </div>
                                 <div class="slider-controls">
