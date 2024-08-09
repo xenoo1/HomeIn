@@ -185,7 +185,7 @@
                             <div class="form-elements1">
                                 <div class="container78">
                                     <div class="sub-container38">
-                                        <div class="heading60">Nama</div>
+                                        <div class="heading60">ID</div>
                                         <div class="input-field25">
                                             <input type="hidden" name="property_id" value="{{ $property->id }}">
                                         </div>

@@ -1,7 +1,5 @@
 <?php
 
-// NotificationController.php
-
 namespace App\Http\Controllers;
 
 use App\Models\Notification;
@@ -21,6 +19,8 @@ class NotificationController extends Controller
     {
         // Create a new notification instance
         $notification = new Notification();
+        $notification->customer_id = $customer->id;
+        $notification->property_id = $property->id; // Set the property_id field
         $notification->message = "New customer {$customer->nama} has registered and booked {$property->name}.";
         $notification->save();
     

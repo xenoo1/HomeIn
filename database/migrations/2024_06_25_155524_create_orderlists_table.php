@@ -11,8 +11,8 @@ class CreateOrderlistsTable extends Migration
         Schema::create('orderlists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
-            $table->foreignId('property_id')->constrained()->onDelete('cascade');
-            $table->string('status');
+            $table->foreignId('property_id')->default(1)->constrained()->onDelete('cascade');
+            $table->enum('status', ['paid', 'nonpaid', 'pending']);
             $table->timestamps();
         });
     }

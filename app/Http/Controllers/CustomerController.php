@@ -19,44 +19,61 @@ class CustomerController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $existingCustomer = Customer::where('email', $request->input('email'))->first();
-        if ($existingCustomer) {
-            // Customer already exists, update the existing customer
-            $existingCustomer->update([
-                'nama' => $request->input('nama'),
-                'no_hp' => $request->input('no_hp'),
-                'alamat' => $request->input('alamat'),
-            ]);
-            $customer = $existingCustomer;
-        } else {
-            // Create a new customer
-            $customer = new Customer();
-            $customer->nama = $request->input('nama');
-            $customer->email = $request->input('email');
-            $customer->no_hp = $request->input('no_hp');
-            $customer->alamat = $request->input('alamat');
-            $customer->save();
-        }
+{
+    // Validate the incoming request, including the property_id
+    $request->validate([
+        'nama' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'no_hp' => 'required|string|max:20',
+        'alamat' => 'required|string|max:255',
+        'property_id' => 'required|exists:properties,id',
+    ]);
 
-        if ($request->input('property_id')) {
-            $orderlist = new Orderlist();
-            $orderlist->customer_id = $customer->id;
-            $orderlist->property_id = $request->input('property_id');
-            $orderlist->status = 'pending';
-            $orderlist->save();
-
-            $property = Property::find($request->input('property_id'));
-            $notificationController = new NotificationController();
-            $notification = $notificationController->createNotification($customer, $property);
-        }
-
-        // Redirect ke WhatsApp admin
-        $adminWhatsAppNumber = '6281361569750'; // ganti dengan nomor WhatsApp admin
-        $message = "New Inquiry from {$customer->nama}.";
-        $waUrl = "https://wa.me/{$adminWhatsAppNumber}?text=Halo,%20saya%20ingin%20bertanya%20tentang%20properti" . urlencode($message);
-        return redirect($waUrl);
+    // Check if the customer already exists
+    $existingCustomer = Customer::where('email', $request->input('email'))->first();
+    if ($existingCustomer) {
+        // Update the existing customer
+        $existingCustomer->update([
+            'nama' => $request->input('nama'),
+            'no_hp' => $request->input('no_hp'),
+            'alamat' => $request->input('alamat'),
+        ]);
+        $customer = $existingCustomer;
+    } else {
+        // Create a new customer
+        $customer = new Customer();
+        $customer->nama = $request->input('nama');
+        $customer->email = $request->input('email');
+        $customer->no_hp = $request->input('no_hp');
+        $customer->alamat = $request->input('alamat');
+        $customer->save();
     }
+
+    // Handle the property_id and create an orderlist and notification
+    $property = Property::find($request->input('property_id'));
+    if ($property) {
+        // Create a new orderlist
+        $orderlist = new Orderlist();
+        $orderlist->customer_id = $customer->id;
+        $orderlist->property_id = $property->id;  // Assign the valid property_id
+        $orderlist->status = 'pending';  // Ensure this matches the enum values
+        $orderlist->save();
+
+        // Create a notification
+        $notificationController = new NotificationController();
+        $notification = $notificationController->createNotification($customer, $property);
+    } else {
+        // Handle the case where the property is not found (optional)
+        return redirect()->back()->with('error', 'Property not found.');
+    }
+    
+    // Redirect to WhatsApp admin
+    $adminWhatsAppNumber = '6281361569750'; // Replace with admin's WhatsApp number
+    $message = "New Inquiry from {$customer->nama}.";
+    $waUrl = "https://wa.me/{$adminWhatsAppNumber}?text=Halo,%20saya%20ingin%20bertanya%20tentang%20properti%20" . urlencode($message);
+    return redirect($waUrl);
+}
+
 
     public function show($id)
     {
