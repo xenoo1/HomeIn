@@ -17,13 +17,25 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-        $customer = new Customer();
-        $customer->nama = $request->input('nama');
-        $customer->email = $request->input('email');
-        $customer->no_hp = $request->input('no_hp');
-        $customer->alamat = $request->input('alamat');
-        $customer->save();
-    
+        $existingCustomer = Customer::where('email', $request->input('email'))->first();
+        if ($existingCustomer) {
+            // Customer already exists, update the existing customer
+            $existingCustomer->update([
+                'nama' => $request->input('nama'),
+                'no_hp' => $request->input('no_hp'),
+                'alamat' => $request->input('alamat'),
+            ]);
+            $customer = $existingCustomer;
+        } else {
+            // Create a new customer
+            $customer = new Customer();
+            $customer->nama = $request->input('nama');
+            $customer->email = $request->input('email');
+            $customer->no_hp = $request->input('no_hp');
+            $customer->alamat = $request->input('alamat');
+            $customer->save();
+        }
+
         if ($request->input('property_id')) {
             $orderlist = new Orderlist();
             $orderlist->customer_id = $customer->id;
@@ -31,11 +43,11 @@ class CustomerController extends Controller
             $orderlist->status = 'pending';
             $orderlist->save();
         }
-    
+
         // Redirect ke WhatsApp admin
         $adminWhatsAppNumber = '6281361569750'; // ganti dengan nomor WhatsApp admin
-        $message = "New Inquiry from {$customer->first_name} {$customer->last_name}.";
-        $waUrl = "https://wa.me/{$adminWhatsAppNumber}?text=" . urlencode($message);
+        $message = "New Inquiry from {$customer->nama}.";
+        $waUrl = "https://wa.me/{$adminWhatsAppNumber}?text=Halo,%20saya%20ingin%20bertanya%20tentang%20properti" . urlencode($message);
         return redirect($waUrl);
     }
 
