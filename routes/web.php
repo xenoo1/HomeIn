@@ -6,37 +6,20 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderlistController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 
-use App\Models\Orderlist;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('landingpage');
-});
-// Route::get('properties', function () {
-//     return view('property');
-// });
 
 
 
 Auth::routes();
 
 //landingpage
-Route::get('/about-us', 'AboutUsController@index')->name('about-us');
+Route::get('/', function () {
+    return view('landingpage');
+})->name('landingpage');
+// Route::get('/', 'HomeController@index')->name('landingpage');
 Route::get('/property', [PropertyController::class, 'property'])->name('property');
 Route::get('/services', 'ServicesController@index')->name('services');
-
-Route::get('/detailproperty', [PropertyController::class, 'detailproperty'])->name('detailproperty');
+Route::get('/detailproperty/{property}', [PropertyController::class, 'detailproperty'])->name('detailproperty');
 
 
 
@@ -46,13 +29,6 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 
 // logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-
-
-// register
-// Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-// Route::post('/register', [RegisterController::class, 'register']);
-
 
 #property
 // Route::resource('/properties', PropertyController::class);
@@ -90,3 +66,5 @@ Route::resource('/orderlist', OrderlistController::class);
 // Route::delete('/orderlist/{orderlist}', [OrderlistController::class, 'destroy'])->name('orderlist.destroy');
 
 
+//upload hambar
+Route::post('/uploadgambar', [PropertyController::class, 'uploadgambar'])->name('uploadgambar');

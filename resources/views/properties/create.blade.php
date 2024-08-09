@@ -57,32 +57,26 @@
                                                     <div class="card card-preview">
                                                         <div class="card-inner">
                                                             <div class="preview-block">
-                                                                <div class="row gy-4 justify-content-center">                                                                  
+                                                                <div class="row gy-4 justify-content-center">
                                                                     <div class="col-sm-6 text-center">
-                                                                        <label class="form-label">Dropzone with only Image Upload</label>    
-                                                                        <div class="upload-zone" data-accepted-files="image/*" name="gambar">
-                                                                            <div class="dz-message" data-dz-message>
-                                                                                <span class="dz-message-text">Drag and drop file</span>
-                                                                                <span class="dz-message-text">or</span>
-                                                                                <button class="btn btn-primary">SELECT</button>
+                                                                        <label class="form-label">Upload Gambar (Hanya gambar)</label>
+                                                                        <form action="{{ route('uploadgambar') }}" method="POST" enctype="multipart/form-data" class="dropzone" id="my-awesome-dropzone">
+                                                                            @csrf
+                                                                            <div class="upload-zone" data-accepted-files="image/*">
+                                                                                <div class="dz-message" data-dz-message>
+                                                                                    <span class="dz-message-text">Drag and drop file</span>
+                                                                                    <span class="dz-message-text">or</span>
+                                                                                    <button class="btn btn-primary" type="button">SELECT</button>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label class="form-label">Tanggal</label>
-                                                            <div class="form-control-wrap">
-                                                                <div class="form-icon form-icon-right">
-                                                                    <em class="icon ni ni-calendar-alt"></em>
-                                                                </div>
-                                                                <input type="text" class="form-control date-picker" name="tanggal" required>
-                                                            </div>
-                                                        </div>
-                                                    </div> --}}
+                                                    
+              
                                                    
                                                         <div class="col-lg-6">
                                                             <div class="form-group">

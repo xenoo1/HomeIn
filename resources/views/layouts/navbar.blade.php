@@ -29,7 +29,7 @@
                 <a href=""><div class="text102">Home</div></a>
                 <a href=""><div class="text-button21">About Us</div></a>
                 <a href="{{ route('property') }}"><div class="text-button22">Properties</div></a>
-                <a href=""><div class="text-button23">Services</div></a>
+             
               </nav> 
         </nav>
         <form action="{{ route('login') }}" method="GET">

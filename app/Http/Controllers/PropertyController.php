@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PropertyController extends Controller
 {
     public function index(Request $request)
     {
+
         $properties = Property::query();
 
         $properties->when($request->filled('nama_property'), function ($query) use ($request) {
@@ -38,14 +40,15 @@ class PropertyController extends Controller
 
     public function property()
     {
-        $properties = Property::all(); // retrieve all properties from database
+        $properties = Property::all(); 
         return view('property', compact('properties'));
     }
 
-    public function detailproperty(){
-        return view('detailproperty');
+    public function detailproperty(Property $property)
+    {
+        return view('detailproperty', compact('property'));
     }
-
+    
     public function create()
     {
         return view('properties.create');
@@ -64,7 +67,7 @@ class PropertyController extends Controller
         $property->luas = $request->input('luas');
 
         if ($request->hasFile('gambar')) {
-            $property->gambar = $request->file('gambar')->store('public/gambar');
+            $property->gambar = $request->file('gambar')->move('public/galery');
         }
 
         $property->save();
@@ -74,7 +77,7 @@ class PropertyController extends Controller
 
     public function edit(Property $property)
     {
-        // Tampilkan form edit data properti
+        
         return view('properties.edit', compact('property'));
     }
 
@@ -107,25 +110,13 @@ class PropertyController extends Controller
         // $property->update($data);
     
         if ($request->hasFile('gambar')) {
-            // Hapus gambar lama jika ada
+           
             if ($property->gambar) {
                 Storage::disk('public')->delete($property->gambar);
             }
             $property->gambar = $request->file('gambar')->store('gambar', 'public');
         }
     
-        // if ($request->hasFile('galeri')) {
-        //     // Hapus gambar galeri lama jika ada
-        //     foreach ($property->galeri as $gambar) {
-        //         Storage::disk('public')->delete($gambar->path);
-        //         $gambar->delete();
-        //     }
-        //     // Simpan gambar galeri baru
-        //     foreach ($request->file('galeri') as $file) {
-        //         $path = $file->store('galeri', 'public');
-        //         $property->galeri()->create(['path' => $path]);
-        //     }
-        // }
     
         $property->save();
     
@@ -144,4 +135,18 @@ class PropertyController extends Controller
         $property->delete();
         return redirect()->route('properties.index')->with('success', 'Property berhasil dihapus');
     }
+
+    public function uploadGambar(Request $request)
+{
+    // Validasi file gambar
+    $request->validate([
+        'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    // Simpan file gambar di direktori public/galery
+    $fileName = time().'.'.$request->file->extension();  
+    $request->file->move(public_path('galery'), $fileName);
+
+    return response()->json(['success'=>'File berhasil diupload']);
+}
 }

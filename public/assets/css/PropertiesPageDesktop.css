@@ -695,7 +695,8 @@
   justify-content: center;
   white-space: nowrap;
 }
-.card,
+
+.card ,
 .container8,
 .sub-container3 {
   display: flex;
@@ -717,6 +718,7 @@
 }
 .container8 {
   align-self: stretch;
+  
 }
 .card {
   border-radius: var(--br-xs);
