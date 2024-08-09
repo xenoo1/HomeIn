@@ -10,6 +10,7 @@ class Orderlist extends Model
     use HasFactory;
     
     protected $fillable = [
+        'nama',
         'customer_id',
         'property_id',
         'status',

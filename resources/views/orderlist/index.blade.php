@@ -35,6 +35,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th>NO</th>
+                                                            
                                                             <th>ID Customer</th> 
                                                             <th>ID Property</th>
                                                             <th>Status</th>
@@ -44,6 +45,7 @@
                                                         @foreach($orderlist as $orderlist)
                                                         <tr>
                                                             <td>{{ $loop->iteration }}</td>
+                                                    
                                                             <td>{{ $orderlist->customer_id }}</td>
                                                             <td>{{ $orderlist->property_id }}</td>
                                                             <td>{{ $orderlist->status }}</td>
