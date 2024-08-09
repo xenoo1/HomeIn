@@ -46,14 +46,14 @@
                                                         <tr>
                                                             <td>{{ $loop->iteration }}</td>
                                                             <td>{{ $customer->nama }}</td>
-                                                            <td>IDR {{ $customer->email }}</td>
+                                                            <td>{{ $customer->email }}</td>
                                                             <td>{{ $customer->no_hp }}</td>
                                                             <td>{{ $customer->alamat }}</td>
                                                             
                                                             <td class="tb-odr-action">
-                                                                <div class="tb-odr-btns d-none d-md-inline">
+                                                                {{-- <div class="tb-odr-btns d-none d-md-inline">
                                                                     <a href="{{ route('customers.show', $customer) }}" class="btn btn-sm btn-primary">View</a>
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class="dropdown">
                                                                     <a class="text-soft dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown" data-offset="-8,0"><em class="icon ni ni-more-h"></em></a>
                                                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs">
