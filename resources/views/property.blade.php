@@ -161,7 +161,6 @@
                 <div class="cards-container">
                     <div class="sub-container1">
                         <div class="items-container">
-                            {{-- property 1 --}}
                             <div class="cards-container">
                                 @foreach ($properties as $property)
                                     <div class="card">
@@ -201,11 +200,12 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>   
                                 @endforeach
                             </div>
-
+                           
                         </div>
+                        
                     </div>
                 </div>
             </div>

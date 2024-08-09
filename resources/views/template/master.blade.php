@@ -14,6 +14,8 @@
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.2.0')}}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('assets/css/theme.css?ver=3.2.0')}}">
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 </head>
 
 <body class="nk-body ui-rounder has-sidebar ">
@@ -24,10 +26,10 @@
             <div class="nk-sidebar is-light nk-sidebar-fixed is-light " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
-                        <a href="html/index.html" class="logo-link nk-sidebar-logo">
-                            <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                            <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
-                            <img class="logo-small logo-img logo-img-small" src="./images/logo-small.png" srcset="./images/logo-small2x.png 2x" alt="logo-small">
+                        <a href="" class="logo-link nk-sidebar-logo">
+                            <img class="logo-light logo-img" src="{{ asset('./images/logo.png') }}" srcset="{{ asset('./images/logo2x.png 2x') }}" alt="logo">
+                            <img class="logo-dark logo-img" src=".{{ asset('/images/logo-dark.png') }}" srcset="{{ asset('./images/logo-dark2x.png 2x') }}" alt="logo-dark">
+                            <img class="logo-small logo-img logo-img-small" src="{{ asset('./images/logo-small.png') }}" srcset="{{ asset('./images/logo-small2x.png 2x') }}" alt="logo-small">
                         </a>
                     </div>
                     <div class="nk-menu-trigger me-n2">

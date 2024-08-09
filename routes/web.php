@@ -44,7 +44,6 @@ Route::delete('/properties/{id}', [PropertyController::class, 'destroy'])->name(
  
 #customer
 Route::resource('/customers', CustomerController::class);
-Route::post('/submit-customer', 'PropertyController@submitCustomer')->name('customer.submit');
 
 // Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
 // Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');

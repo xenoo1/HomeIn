@@ -65,15 +65,28 @@ class PropertyController extends Controller
         $property->kamar_tidur = $request->input('kamar_tidur');
         $property->kamar_mandi = $request->input('kamar_mandi');
         $property->luas = $request->input('luas');
+    
 
+       
         if ($request->hasFile('gambar')) {
-            $property->gambar = $request->file('gambar')->move('public/galery');
+            // Ambil file gambar dari request
+            $file = $request->file('gambar');
+        
+            // Tentukan nama file baru untuk disimpan
+            $filename = time() . '_' . $file->getClientOriginalName();
+        
+            // Pindahkan file ke folder 'galery' di dalam direktori 'public'
+            $file->move(public_path('galery'), $filename);
+        
+            // Simpan path gambar ke database
+            $property->gambar = 'galery/' . $filename;
         }
-
+    
         $property->save();
     
-        return redirect()->route('properties.index')->with('success', 'Data property berhasil disimpan');
+        return redirect()->route('properties.index')->with('success', 'Property berhasil disimpan.');
     }
+    
 
     public function edit(Property $property)
     {
@@ -102,7 +115,6 @@ class PropertyController extends Controller
         $property->alamat = $data['alamat'];
         $property->deskripsi = $data['deskripsi'];
         $property->harga = $data['harga'];
-       
         $property->tipe_rumah = $data['tipe_rumah'];
         $property->kamar_tidur = $data['kamar_tidur'];
         $property->kamar_mandi = $data['kamar_mandi'];
@@ -136,17 +148,18 @@ class PropertyController extends Controller
         return redirect()->route('properties.index')->with('success', 'Property berhasil dihapus');
     }
 
-    public function uploadGambar(Request $request)
-{
-    // Validasi file gambar
-    $request->validate([
-        'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
+    public function uploadgambar(Request $request)
+    {
+        // Validasi file gambar
+        $request->validate([
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    // Simpan file gambar di direktori public/galery
-    $fileName = time().'.'.$request->file->extension();  
-    $request->file->move(public_path('galery'), $fileName);
+        
+        $imageName = time().'.'.$request->gambar->extension();  
 
-    return response()->json(['success'=>'File berhasil diupload']);
-}
+        $request->gambar->move(public_path('galery'), $imageName);
+
+        return back()->with('success','You have successfully upload image.');
+    }
 }

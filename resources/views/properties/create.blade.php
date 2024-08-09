@@ -1,7 +1,6 @@
 @extends('template.master')
 
 @section('content')
-
     <div class="nk-app-root">
                         <div class="nk-content-body">
                             <div class="components-preview wide-xl mx-auto">
@@ -54,13 +53,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+
                                                     <div class="card card-preview">
                                                         <div class="card-inner">
                                                             <div class="preview-block">
                                                                 <div class="row gy-4 justify-content-center">
                                                                     <div class="col-sm-6 text-center">
                                                                         <label class="form-label">Upload Gambar (Hanya gambar)</label>
-                                                                        <form action="{{ route('uploadgambar') }}" method="POST" enctype="multipart/form-data" class="dropzone" id="my-awesome-dropzone">
+                                                                        <form action="{{ route('uploadgambar') }}" method="POST" enctype="multipart/form-data" class="dropzone" id="upload-file">
                                                                             @csrf
                                                                             <div class="upload-zone" data-accepted-files="image/*">
                                                                                 <div class="dz-message" data-dz-message>
@@ -75,7 +76,26 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    {{-- <div class="form-group">
+                                                        <label class="form-label" for="customMultipleFilesLabel">Multiple File Upload</label>
+                                                        <div class="form-control-wrap">
+                                                            <div class="form-file">
+                                                                <input type="file" multiple class="form-file-input" id="customMultipleFiles">
+                                                                <label class="form-file-label" for="customMultipleFiles">Choose files</label>
+                                                            </div>
+                                                        </div>
+                                                    </div> --}}
                                                     
+
+                                                    {{-- <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Upload Gambar (Hanya gambar)</label>
+                                                            <div class="form-control-wrap">
+                                                                <input type="file" class="form-control" name="gambar" accept="image/*" required>
+                                                            </div>
+                                                        </div>
+                                                    </div> --}}
               
                                                    
                                                         <div class="col-lg-6">
@@ -133,4 +153,12 @@
                         </div>
                     
     </div>
+    <script>
+        Dropzone.options.uploadFile = {
+            paramName: 'gambar',
+            params: {
+                _token: document.querySelector{'meta[name="csrf-token"]'}.content
+            }
+        }
+    </script>
 @endsection

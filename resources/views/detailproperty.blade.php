@@ -15,13 +15,14 @@
         <div class="main">
             <div class="header3">
                 <div class="banner3">
-                    <img class="abstract-design-icon13" alt="" src="images/abstract-design.svg" />
+                    <img class="abstract-design-icon13" alt=""
+                        src="{{ asset('images/abstract-design.svg') }}" />
                 </div>
                 <header class="header-content">
                     <div class="navigation-bar3">
                         <div class="nav-links">
                             <div class="home3">
-                                <img class="symbol-icon6" alt="" src="images/symbol.svg" />
+                                <img class="symbol-icon6" alt="" src="{{ asset('images/symbol.svg') }}" />
                             </div>
                         </div>
                         <div class="nav-actions">
@@ -56,8 +57,7 @@
                             <div class="sub-container31">
                                 <h2 class="heading52">{{ $property->nama_property }}</h2>
                                 <div class="container66">
-                                    <img class="icon77" alt="" src="images/icon-16.svg" />
-
+                                    <img class="icon77" alt="" src="{{ asset('images/icon-16.svg') }}" />
                                     <div class="address">{{ $property->alamat }}</div>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                     @foreach (File::files(public_path('galery')) as $file)
                                         <img class="image-icon18"
                                             alt="{{ pathinfo($file->getFilename(), PATHINFO_FILENAME) }}"
-                                            src="{{ asset('galer/' . $file->getFilename()) }}" />
+                                            src="{{ asset('galery/' . $file->getFilename()) }}" />
                                     @endforeach
                                 </div>
                                 <div class="slider-controls">
@@ -117,7 +117,8 @@
                                     <div class="sub-container33">
                                         <div class="container69">
                                             <div class="sub-container34">
-                                                <img class="icon77" alt="" src="images/icon-41.svg" />
+                                                <img class="icon77" alt=""
+                                                    src="{{ asset('images/icon-41.svg') }}" />
 
                                                 <div class="heading55">Kamar Tidur</div>
                                             </div>
@@ -126,7 +127,8 @@
                                         <div class="line5"></div>
                                         <div class="container69">
                                             <div class="sub-container34">
-                                                <img class="icon77" alt="" src="images/icon-52.svg" />
+                                                <img class="icon77" alt=""
+                                                    src="{{ asset('images/icon-52.svg') }}" />
 
                                                 <div class="heading55">Kamar Mandi</div>
                                             </div>
@@ -135,7 +137,8 @@
                                         <div class="line5"></div>
                                         <div class="container69">
                                             <div class="sub-container34">
-                                                <img class="icon77" alt="" src="images/icon-61.svg" />
+                                                <img class="icon77" alt=""
+                                                    src="{{ asset('images/icon-61.svg') }}" />
 
                                                 <div class="heading55">Luas</div>
                                             </div>
@@ -152,20 +155,20 @@
                     <div class="owner-details">
                         <div class="owner-message">
                             <img class="message-content-icon" loading="lazy" alt=""
-                                src="images/frame-3186.svg" />
+                                src="{{ asset('images/frame-3186.svg') }}" />
 
                             <div class="message-actions">
                                 <div class="message-buttons">
                                     <img class="message-button-primary" loading="lazy" alt=""
-                                        src="images/frame-3187.svg" />
+                                        src="{{ asset('images/frame-3187.svg') }}" />
 
                                     <img class="message-button-secondary" loading="lazy" alt=""
-                                        src="images/frame-3188.svg" />
+                                        src="{{ asset('images/frame-3188.svg') }}" />
                                 </div>
                             </div>
                         </div>
                         <div class="owner-info">
-                            <h1 class="heading59">Inquire About {{ $property->nama_property }} Villa</h1>
+                            <h1 class="heading59">Inquire About {{ $property->nama_property }}</h1>
                         </div>
                         <div class="owner-info1">
                             <div class="paragraph35">
@@ -184,30 +187,37 @@
                                     <div class="sub-container38">
                                         <div class="heading60">Nama</div>
                                         <div class="input-field25">
-                                            <input class="name-placeholder" name="nama"
+                                            <input type="hidden" name="property_id" value="{{ $property->id }}">
+                                        </div>
+                                    </div>
+                                    <div class="sub-container38">
+                                        <div class="heading60">Nama</div>
+                                        <div class="input-field25">
+                                            <input class="name-placeholder" id="nama" name="nama"
                                                 placeholder="masukkan nama anda" type="text" required />
                                         </div>
                                     </div>
+                                
                                 </div>
                                 <div class="container78">
                                     <div class="sub-container38">
                                         <div class="heading60">Email</div>
                                         <div class="input-field25">
-                                            <input class="name-placeholder" name="email"
+                                            <input class="name-placeholder" id="email" name="email"
                                                 placeholder="masukkan email anda" type="email" required />
                                         </div>
                                     </div>
                                     <div class="sub-container38">
                                         <div class="heading60">No Hp</div>
                                         <div class="input-field25">
-                                            <input class="name-placeholder" name="no_hp"
+                                            <input class="name-placeholder" id="no_hp" name="no_hp"
                                                 placeholder="masukkan nomor hp" type="integer" required />
                                         </div>
                                     </div>
                                     <div class="sub-container38">
                                         <div class="heading60">Alamat</div>
                                         <div class="input-field25">
-                                            <input class="name-placeholder" name="alamat"
+                                            <input class="name-placeholder" id="alamat" name="alamat"
                                                 placeholder="masukkan alamat anda" type="text" required />
                                         </div>
                                     </div>
@@ -216,7 +226,7 @@
                                 </div>
                             </div>
                             <div class="frame-parent28">
-                                <button class="button55" type="submit">
+                                <button class="button55" type="submit" formaction="{{ route('customers.store') }}">
                                     <div class="text70">Send Your Message</div>
                                 </button>
                             </div>
@@ -228,14 +238,15 @@
                         <div class="footer-navigation">
                             <div class="footer-links">
                                 <div class="owner-message">
-                                    <img class="message-content-icon" alt="" src="images/frame-3186.svg" />
+                                    <img class="message-content-icon" alt=""
+                                        src="{{ asset('images/frame-3186.svg') }}" />
                                     <div class="message-actions">
                                         <div class="message-buttons">
                                             <img class="message-button-primary" alt=""
-                                                src="images/frame-3187.svg" />
+                                                src="{{ asset('images/frame-3187.svg') }}" />
 
                                             <img class="message-button-secondary" alt=""
-                                                src="images/frame-3188.svg" />
+                                                src="{{ asset('images/frame-3188.svg') }}" />
                                         </div>
                                     </div>
                                 </div>
@@ -307,7 +318,7 @@
             </section>
         </main>
         <div class="cta3">
-            <img class="abstract-design-icon14" alt="" src="images/abstract-design-1.svg" />
+            <img class="abstract-design-icon14" alt="" src="{{ asset('images/abstract-design-1.svg') }}" />
 
             <h1 class="heading96">Start Your Real Estate Journey Today</h1>
             <div class="paragraph41">
@@ -318,7 +329,8 @@
                 properties or get in touch with our team for personalized assistance.
             </div>
             <div class="button-container1">
-                <img class="abstract-design-icon15" alt="" src="images/abstract-design-2.svg" />
+                <img class="abstract-design-icon15" alt=""
+                    src="{{ asset('images/abstract-design-2.svg') }}" />
 
                 <button class="button66">
                     <div class="button-label4">Explore Properties</div>
@@ -329,19 +341,19 @@
             <div class="footer-info">
                 <div class="footer-details">
                     <div class="footer-branding">
-                        <img class="symbol-icon6" alt="" src="images/symbol.svg" />
+                        <img class="symbol-icon6" alt="" src="{{ asset('images/symbol.svg') }}" />
 
                         <div class="home-label">
-                            <img class="text-icon6" alt="" src="images/text.svg" />
+                            <img class="text-icon6" alt="" src="{{ asset('images/text.svg') }}" />
                         </div>
                     </div>
                     <div class="input-feild3">
                         <div class="signup-field">
-                            <img class="icon92" alt="" src="images/icon-21.svg" />
+                            <img class="icon92" alt="" src="{{ asset('images/icon-21.svg') }}" />
                         </div>
                         <input class="placeholder7" placeholder="Enter Your Email" type="text" />
 
-                        <img class="icon93" alt="" src="images/icon-22.svg" />
+                        <img class="icon93" alt="" src="{{ asset('images/icon-22.svg') }}" />
                     </div>
                 </div>
                 <div class="footer-link-container3">
@@ -401,16 +413,16 @@
             </div>
             <div class="buttons-container4">
                 <div class="button67">
-                    <img class="icon77" alt="" src="images/icon-23.svg" />
+                    <img class="icon77" alt="" src="{{ asset('images/icon-23.svg') }}" />
                 </div>
                 <div class="button67">
-                    <img class="icon77" alt="" src="images/icon-24.svg" />
+                    <img class="icon77" alt="" src="{{ asset('images/icon-24.svg') }}" />
                 </div>
                 <div class="button67">
-                    <img class="icon77" alt="" src="images/icon-25.svg" />
+                    <img class="icon77" alt="" src="{{ asset('images/icon-25.svg') }}" />
                 </div>
                 <div class="button67">
-                    <img class="icon77" alt="" src="images/icon-26.svg" />
+                    <img class="icon77" alt="" src="{{ asset('images/icon-26.svg') }}" />
                 </div>
             </div>
         </div>

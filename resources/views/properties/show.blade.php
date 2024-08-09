@@ -85,15 +85,14 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="col-lg-12">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label class="form-label">Gambar</label>
                                     <div class="form-control-wrap">
-                                        <img src="{{ asset('storage/' . ($property->gambar ?? 'default.jpg')) }}" alt="Gambar Property" class="img-fluid">
+                                        <img src="{{ asset($property->gambar ?? 'galery/default.jpg') }}" id="gambar" alt="Gambar Property" class="img-fluid" style="width: 1080px; height: 1080px; object-fit: cover;">
                                     </div>
                                 </div>
-                            </div> --}}
-                             
+                            </div> 
                         </div>
                         <div class="form-group mt-4">
                             <a href="{{ route('properties.index') }}" class="btn btn-secondary">Back to List</a>
