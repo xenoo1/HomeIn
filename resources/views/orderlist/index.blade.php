@@ -48,15 +48,12 @@
                                                             <td>{{ $orderlist->property_id }}</td>
                                                             <td>{{ $orderlist->status }}</td>
                                                             <td class="tb-odr-action">
-                                                                {{-- <div class="tb-odr-btns d-none d-md-inline">
-                                                                    <a href="{{ route('customers.show', $orderlist) }}" class="btn btn-sm btn-primary">View</a>
-                                                                </div> --}}
+                
                                                                 <div class="dropdown">
                                                                     <a class="text-soft dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown" data-offset="-8,0"><em class="icon ni ni-more-h"></em></a>
                                                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs">
                                                                         <ul class="link-list-plain">
                                                                             <li><a href="{{ route('orderlist.edit', ['orderlist' => $orderlist->id]) }}" class="text-primary">Edit</a></li>
-                                                                            {{-- <li><a href="{{ route('orderlist.destroy', $orderlist) }}" class="text-danger">Remove</a></li> --}}
                                                                             <form action="{{ route('orderlist.destroy', $orderlist->id) }}" method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
@@ -67,7 +64,6 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        
                                                         @endforeach
                                                     </tbody>
                                                 </table>

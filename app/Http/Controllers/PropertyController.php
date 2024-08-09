@@ -66,8 +66,7 @@ class PropertyController extends Controller
         $property->kamar_mandi = $request->input('kamar_mandi');
         $property->luas = $request->input('luas');
     
-
-       
+    
         if ($request->hasFile('gambar')) {
             // Ambil file gambar dari request
             $file = $request->file('gambar');

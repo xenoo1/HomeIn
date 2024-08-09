@@ -37,30 +37,44 @@ class OrderlistController extends Controller
      */
     public function show(Orderlist $orderlist)
     {
-        return view('orderlist.show', compact('orderlist'));
+        $data = compact('orderlist'); // This should work
+        return view('your-view', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(orderlist $orderlist)
     {
-        //
+        return view('orderlist.edit', compact('orderlist'));
     }
 
-    /**
+    /** 
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Orderlist $orderlist)
     {
-        //
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'customer_id' => 'required|exists:customers,id',
+            'property_id' => 'required|exists:properties,id',
+            'status' => 'required|in:pending,paid,nonpaid', // Ensure these match the schema
+        ]);
+
+        // Update the Orderlist instance with validated data
+        $orderlist->update($validatedData);
+
+        // Redirect back to the index route with a success message
+        return redirect()->route('orderlist.index')->with('success', 'Order updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Orderlist $orderlist)
     {
-        //
+        $orderlist->delete();
+        return redirect()->route('orderlist.index');
     }
 }
