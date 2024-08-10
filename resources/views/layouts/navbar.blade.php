@@ -21,9 +21,9 @@
                 </nav>
             </nav>
             <form action="{{ route('login') }}" method="GET">
-                <button type="submit" class="button73">
+                {{-- <button type="submit" class="button73">
                     <div class="text103">Login</div>
-                </button>
+                </button> --}}
             </form>
         </nav>
     </header>

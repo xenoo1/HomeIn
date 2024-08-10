@@ -77,7 +77,7 @@
                                                         </div>
                                                     </div>
 
-                                                    {{-- <div class="form-group">
+                                                  {{-- <div class="form-group">
                                                         <label class="form-label" for="customMultipleFilesLabel">Multiple File Upload</label>
                                                         <div class="form-control-wrap">
                                                             <div class="form-file">
@@ -85,7 +85,7 @@
                                                                 <label class="form-file-label" for="customMultipleFiles">Choose files</label>
                                                             </div>
                                                         </div>
-                                                    </div> --}}
+                                                    </div>  --}}
                                                     
 
                                                     {{-- <div class="col-lg-6">

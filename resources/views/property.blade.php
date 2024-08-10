@@ -41,9 +41,9 @@
                         </nav>
                     </div>
                     <a href="{{ route('login') }}">
-                        <button class="button2">
+                        {{-- <button class="button2">
                             <div class="text2">Login</div>
-                        </button>
+                        </button> --}}
                     </a>
                 </div>
             </header>
@@ -156,17 +156,17 @@
                 <div class="cards-container">
                     <div class="sub-container1">
                         <div class="items-container">
+                            @foreach ($properties as $property)
                             <div class="cards-container">
-                                @foreach ($properties as $property)
                                     <div class="card">
                                         @php
-                                        $files = File::files(public_path('galery'));
-                                        $firstFile = !empty($files) ? $files[0] : null;
+                                            $files = File::files(public_path('galery'));
+                                            $firstFile = !empty($files) ? $files[0] : null;
                                         @endphp
-                                        
+
                                         @if ($firstFile)
-                                            <img class="image-icon" loading="lazy" 
-                                                alt="{{ pathinfo($firstFile->getFilename(), PATHINFO_FILENAME) }}" 
+                                            <img class="image-icon" loading="lazy"
+                                                alt="{{ pathinfo($firstFile->getFilename(), PATHINFO_FILENAME) }}"
                                                 src="{{ asset('galery/' . $firstFile->getFilename()) }}" />
                                         @else
                                             <p>No images found in the gallery.</p>
@@ -195,12 +195,10 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </div>   
-                                @endforeach
+                                    </div>                               
                             </div>
-                           
+                            @endforeach
                         </div>
-                        
                     </div>
                 </div>
             </div>

@@ -34,7 +34,6 @@ Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 #dashboard
 
 
-// Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -42,7 +41,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Dashboard accessible only to admin
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    
+    // routes/web.php
+    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     //property
     Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');

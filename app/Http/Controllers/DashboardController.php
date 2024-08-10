@@ -1,13 +1,19 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Customer;
+use App\Models\Property;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard'); // Create this view for the admin dashboard
+        $customerCount = Customer::count();
+        $propertyCount = Property::count();
+    
+        return view('dashboard', compact('customerCount', 'propertyCount'));
     }
+    
 }

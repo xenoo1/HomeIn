@@ -36,9 +36,9 @@
                             </nav>
                         </div>
                         <a href="{{ route('login') }}">
-                            <button class="button52">
+                            {{-- <button class="button52">
                                 <div class="signup-label">Login</div>
-                            </button>
+                            </button> --}}
                         </a>
                     </div>
                 </header>

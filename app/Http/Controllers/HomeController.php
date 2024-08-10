@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Customer;
+use App\Models\Property;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $customerCount = Customer::count();
+        $propertyCount = Property::count();
+
+        return view('home', compact('customerCount', 'propertyCount'));
     }
 }
